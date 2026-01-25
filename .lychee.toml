@@ -1,0 +1,77 @@
+# Lychee link checker configuration
+
+# Cache configuration
+cache = true
+max_cache_age = "1d"
+
+# Verification settings
+max_redirects = 5
+max_retries = 3
+timeout = 30
+
+# Accept these status codes as valid
+accept = [
+  200, 201, 202, 203, 204,
+  206, 207, 208, 226,
+  # Temporary redirects
+  307, 308,
+  # GitHub may return 429 (rate limit) - we'll accept it
+  429
+]
+
+# Include patterns
+include = [
+  "**/*.md"
+]
+
+# Exclude patterns - paths and URLs
+exclude = [
+  # Local development
+  "http://localhost*",
+  "http://127.0.0.1*",
+  "http://0.0.0.0*",
+
+  # Git internals
+  ".git",
+
+  # Exclude email links
+  "mailto:*",
+
+  # Slack requires authentication
+  "https://kubernetes.slack.com*",
+  "https://cloud-native.slack.com*"
+]
+
+# Exclude specific link types
+exclude_link_local = false
+exclude_all_private = false
+exclude_mail = true
+
+# Don't check these external domains (authentication required)
+exclude_domains = []
+
+# Remap URLs (e.g., for local preview to GitHub Pages)
+# Example: remap = ["https://example.com https://staging.example.com"]
+remap = []
+
+# Headers to send with requests (for authentication if needed)
+# headers = ["authorization=Bearer token"]
+
+# User agent string
+user_agent = "Mozilla/5.0 (compatible; lychee/link-checker)"
+
+# Treat warnings as errors
+require_https = false
+
+# Skip checking SSL certificates
+insecure = false
+
+# Maximum number of concurrent network requests
+max_concurrency = 16
+
+# Verbosity
+verbose = true
+no_progress = true
+
+# Base URL for relative links (auto-detected from git)
+# base = "https://github.com/user/repo"

@@ -1,7 +1,5 @@
 # KCNA (Kubernetes and Cloud Native Associate) - Study Guide
 
-> **Note**: This is a personal study guide created to help organize learning materials and facilitate passing the KCNA certification. It is not an official CNCF or Linux Foundation resource, but rather a structured collection of study materials, labs, and notes compiled from various sources.
-
 ## Overview
 
 The Kubernetes and Cloud Native Associate (KCNA) is an entry-level certification that demonstrates a learner's understanding of Kubernetes and cloud-native technologies. This certification validates knowledge of cloud-native fundamentals, including container orchestration with Kubernetes, cloud-native architecture, and the CNCF ecosystem.

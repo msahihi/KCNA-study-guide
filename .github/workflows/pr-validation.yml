@@ -1,0 +1,101 @@
+name: PR Validation
+
+on:
+  pull_request:
+    branches: ['**']
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+# Cancel in-progress runs when a new one is triggered
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  markdown-lint:
+    name: Markdown Linting
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install markdownlint-cli2
+        run: npm install -g markdownlint-cli2
+
+      - name: Run markdownlint
+        run: markdownlint-cli2 "**/*.md" "#node_modules"
+
+  link-validation:
+    name: Link Validation
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Restore lychee cache
+        uses: actions/cache@v4
+        with:
+          path: .lycheecache
+          key: lychee-cache-${{ github.sha }}
+          restore-keys: lychee-cache-
+
+      - name: Link Checker (lychee)
+        uses: lycheeverse/lychee-action@v2
+        with:
+          args: |
+            --cache
+            --max-cache-age 1d
+            --verbose
+            --no-progress
+            --exclude-path .git
+            --exclude-path node_modules
+            '**/*.md'
+          fail: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Link report
+        if: failure()
+        run: |
+          echo "::error::Link validation failed. Check the logs above for broken links."
+
+  structure-validation:
+    name: Structure Validation
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Validate file structure
+        run: |
+          chmod +x .github/scripts/validate-structure.sh
+          .github/scripts/validate-structure.sh
+
+      - name: Check for orphaned files
+        run: |
+          chmod +x .github/scripts/check-orphans.sh
+          .github/scripts/check-orphans.sh
+
+  # Summary job that depends on all validation jobs
+  validation-complete:
+    name: Validation Complete
+    runs-on: ubuntu-latest
+    needs: [markdown-lint, link-validation, structure-validation]
+    if: always()
+    steps:
+      - name: Check all jobs status
+        run: |
+          if [[ "${{ needs.markdown-lint.result }}" != "success" ]] || \
+             [[ "${{ needs.link-validation.result }}" != "success" ]] || \
+             [[ "${{ needs.structure-validation.result }}" != "success" ]]; then
+            echo "::error::One or more validation checks failed"
+            exit 1
+          fi
+          echo "✅ All validation checks passed!"
