@@ -21,11 +21,6 @@ accept = [
   429
 ]
 
-# Include patterns
-include = [
-  "**/*.md"
-]
-
 # Exclude patterns - paths and URLs
 exclude = [
   # Local development
@@ -54,17 +49,14 @@ exclude = [
 # Exclude specific link types
 exclude_link_local = false
 exclude_all_private = false
-exclude_mail = true
-
-# Don't check these external domains (authentication required)
-exclude_domains = []
+include_mail = false
 
 # Remap URLs (e.g., for local preview to GitHub Pages)
 # Example: remap = ["https://example.com https://staging.example.com"]
 remap = []
 
 # Headers to send with requests (for authentication if needed)
-# headers = ["authorization=Bearer token"]
+# header = ["authorization=Bearer token"]
 
 # User agent string
 user_agent = "Mozilla/5.0 (compatible; lychee/link-checker)"
@@ -78,9 +70,9 @@ insecure = false
 # Maximum number of concurrent network requests
 max_concurrency = 16
 
-# Verbosity
-verbose = true
+# Verbosity (use "info" for verbose output)
+verbose = "info"
 no_progress = true
 
 # Base URL for relative links (auto-detected from git)
-# base = "https://github.com/user/repo"
+# base_url = "https://github.com/user/repo"
