@@ -41,7 +41,14 @@ exclude = [
 
   # Slack requires authentication
   "https://kubernetes.slack.com*",
-  "https://cloud-native.slack.com*"
+  "https://cloud-native.slack.com*",
+
+  # Reddit blocks automated requests
+  "https://www.reddit.com*",
+  "https://reddit.com*",
+
+  # Play with K8s has TLS issues
+  "https://labs.play-with-k8s.com*"
 ]
 
 # Exclude specific link types
