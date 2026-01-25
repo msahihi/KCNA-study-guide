@@ -15,7 +15,9 @@ accept = [
   206, 207, 208, 226,
   # Temporary redirects
   307, 308,
-  # GitHub may return 429 (rate limit) - we'll accept it
+  # Forbidden - sites that block automated requests
+  403,
+  # Rate limit - GitHub and other services
   429
 ]
 
