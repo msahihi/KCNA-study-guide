@@ -5,9 +5,11 @@ Complete practice exams to simulate the official KCNA certification experience.
 ## Available Mock Exams
 
 ### Mock Exam Set 1
+
 **[mock-exam-set-1.md](mock-exam-set-1.md)**
 
 ### Mock Exam Set 2
+
 **[mock-exam-set-2.md](mock-exam-set-2.md)**
 
 ## Exam Information
@@ -30,7 +32,6 @@ Questions are distributed according to official KCNA exam weights:
 | **Container Orchestration** | 28% | 17 questions |
 | **Cloud Native Application Delivery** | 16% | 9 questions |
 | **Cloud Native Architecture** | 12% | 7 questions |
-
 
 ## Additional Resources
 

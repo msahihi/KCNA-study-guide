@@ -7,6 +7,7 @@
 ## Exam Domain Distribution
 
 Questions are distributed according to official KCNA exam weights:
+
 - **Kubernetes Fundamentals (44%)**: Questions 1-27
 - **Container Orchestration (28%)**: Questions 28-44
 - **Cloud Native Application Delivery (16%)**: Questions 45-53
@@ -103,6 +104,7 @@ D. Default
 <summary>Explanation</summary>
 
 The three Pod Security Standards are:
+
 - **Privileged**: Unrestricted (least secure)
 - **Baseline**: Minimal restrictions
 - **Restricted**: Most restrictive, follows pod hardening best practices
@@ -124,9 +126,11 @@ D. Job
 <summary>Explanation</summary>
 
 Databases require:
+
 - Stable network identity (predictable pod names)
 - Persistent storage that follows the pod
 - Ordered deployment and scaling
+
 StatefulSets provide all of these. Deployments are for stateless applications.
 
 </details>
@@ -218,6 +222,7 @@ D. All of the above
 <summary>Explanation</summary>
 
 All three methods can modify a deployment's replica count:
+
 - `kubectl edit` opens the resource in an editor
 - `kubectl patch` applies partial changes
 - `kubectl scale` is specifically designed for scaling
@@ -585,6 +590,7 @@ D. StatefulSets do not support rolling updates
 <summary>Explanation</summary>
 
 Key differences:
+
 - Deployments: stateless, interchangeable pods, shared storage
 - StatefulSets: stateful, unique pod identities (pod-0, pod-1), dedicated persistent volumes, ordered operations
 
@@ -605,8 +611,10 @@ D. Route
 <summary>Explanation</summary>
 
 Network Policies have two types:
+
 - **Ingress**: Controls incoming traffic TO pods
 - **Egress**: Controls outgoing traffic FROM pods
+
 A policy can define both.
 
 </details>
@@ -662,6 +670,7 @@ D. Storage usage
 <summary>Explanation</summary>
 
 HPA can scale based on:
+
 - CPU utilization
 - Memory utilization
 - Custom metrics (from applications or external systems)
@@ -702,6 +711,7 @@ D. Respecting node taints and pod tolerations
 <summary>Explanation</summary>
 
 The scheduler assigns pods to nodes. It doesn't monitor pod health (kubelet does that via probes). Scheduler responsibilities:
+
 - Select nodes for pods
 - Consider resource requirements
 - Respect taints, tolerations, and affinity rules
@@ -759,6 +769,7 @@ D. Taints only
 <summary>Explanation</summary>
 
 To target specific hardware:
+
 - **Node selectors**: Simple label matching (e.g., `gpu=true`)
 - **Node affinity**: More expressive rules
 - **Taints/tolerations**: Also work but are typically for repelling pods
@@ -780,6 +791,7 @@ D. PreventSchedule
 <summary>Explanation</summary>
 
 Taint effects:
+
 - **NoSchedule**: Prevents new pods from scheduling (existing pods stay)
 - **PreferNoSchedule**: Soft version, tries to avoid scheduling
 - **NoExecute**: Evicts existing pods and prevents new ones
@@ -801,6 +813,7 @@ D. All of the above
 <summary>Explanation</summary>
 
 Pods can be evicted by:
+
 - Node resource pressure (out of memory, disk)
 - Taints with NoExecute effect
 - `kubectl drain` command
@@ -917,6 +930,7 @@ D. Improved network performance
 <summary>Explanation</summary>
 
 GitOps core principles:
+
 - Git is the source of truth
 - Declarative configuration
 - Automated synchronization
@@ -940,8 +954,10 @@ D. Recreate
 <summary>Explanation</summary>
 
 Blue-green deployment maintains two identical environments:
+
 - Blue: Current production
 - Green: New version
+
 Traffic switches completely from blue to green once validated. Enables instant rollback.
 
 </details>
@@ -961,6 +977,7 @@ D. To store application secrets
 <summary>Explanation</summary>
 
 Ingress controllers implement Ingress resources, providing:
+
 - HTTP/HTTPS routing
 - Load balancing
 - SSL/TLS termination
@@ -983,6 +1000,7 @@ D. Simpler configuration
 <summary>Explanation</summary>
 
 Gateway API advantages over Ingress:
+
 - Role-oriented: Separate resources for different roles
 - Multi-protocol: HTTP, HTTPS, TCP, UDP, gRPC
 - Extensible: Standardized extension points
@@ -1064,10 +1082,12 @@ D. To schedule container workloads
 <summary>Explanation</summary>
 
 Distributed tracing tracks requests across multiple services, showing:
+
 - Request path through services
 - Latency at each hop
 - Errors and bottlenecks
 - Service dependencies
+
 Tools: Jaeger, Zipkin
 
 </details>
@@ -1087,8 +1107,10 @@ D. Pod replicas
 <summary>Explanation</summary>
 
 In distributed tracing:
+
 - **Trace**: Complete journey of a request
 - **Span**: Individual operation within a trace (e.g., database query, HTTP call)
+
 Spans have start time, duration, and metadata.
 
 </details>
@@ -1108,6 +1130,7 @@ D. Single point of failure for simplicity
 <summary>Explanation</summary>
 
 Cloud-native principles:
+
 - Microservices architecture
 - Containerization
 - Dynamic orchestration (Kubernetes)
@@ -1150,6 +1173,7 @@ D. OnUpdate
 <summary>Explanation</summary>
 
 Image pull policies:
+
 - **Always**: Pull image every time (latest tags)
 - **IfNotPresent**: Pull only if not cached locally (default for specific tags)
 - **Never**: Never pull, must exist locally
@@ -1171,9 +1195,11 @@ D. Use a Job because databases complete their work and exit
 <summary>Explanation</summary>
 
 Databases require:
+
 - Persistent storage (data survives restarts)
 - Stable network identity (for replication, clustering)
 - Ordered scaling (primary before replicas)
+
 StatefulSets provide all of these guarantees.
 
 </details>

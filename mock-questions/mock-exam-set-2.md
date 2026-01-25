@@ -7,6 +7,7 @@
 ## Exam Domain Distribution
 
 Questions are distributed according to official KCNA exam weights:
+
 - **Kubernetes Fundamentals (44%)**: Questions 1-27
 - **Container Orchestration (28%)**: Questions 28-44
 - **Cloud Native Application Delivery (16%)**: Questions 45-53
@@ -31,6 +32,7 @@ D. They are identical in functionality
 <summary>Explanation</summary>
 
 Key differences:
+
 - **kubectl cordon**: Simple, marks node unschedulable, no additional configuration needed
 - **kubectl taint**: More flexible, requires pod tolerations, allows dedicated nodes for specific workloads
 
@@ -123,6 +125,7 @@ D. Job
 <summary>Explanation</summary>
 
 Stateless web applications are perfect for Deployments:
+
 - No persistent data requirements
 - Pods are interchangeable
 - Easy horizontal scaling
@@ -199,9 +202,11 @@ D. To define resource requests
 <summary>Explanation</summary>
 
 Annotations store arbitrary metadata that doesn't identify objects (unlike labels). Common uses:
+
 - Build information
 - Tool configuration
 - Contact information
+
 Annotations can't be used in selectors.
 
 </details>
@@ -275,12 +280,17 @@ D. To define resource limits
 <summary>Explanation</summary>
 
 Tolerations allow pods to be scheduled on tainted nodes. A pod must have a toleration matching a node's taint to be scheduled there. Example:
+
 ```yaml
+
 tolerations:
+
 - key: "gpu"
+
   operator: "Equal"
   value: "true"
   effect: "NoSchedule"
+
 ```
 
 </details>
@@ -354,6 +364,7 @@ D. To configure network storage
 <summary>Explanation</summary>
 
 PersistentVolumeClaims (PVCs) request storage. Workflow:
+
 1. Admin creates PersistentVolume (PV)
 2. User creates PVC requesting size and access mode
 3. Kubernetes binds PVC to suitable PV
@@ -376,6 +387,7 @@ D. `kubectl generate -f file.yaml`
 <summary>Explanation</summary>
 
 Both commands work:
+
 - `kubectl create -f`: Creates resources, fails if they exist
 - `kubectl apply -f`: Creates or updates resources declaratively (recommended for GitOps)
 
@@ -396,6 +408,7 @@ D. To run containers
 <summary>Explanation</summary>
 
 kube-proxy runs on each node and manages network rules (iptables/IPVS). It enables:
+
 - Service IP to pod IP mapping
 - Load balancing across pods
 - ClusterIP implementation
@@ -417,9 +430,11 @@ D. Permissive
 <summary>Explanation</summary>
 
 The Privileged Pod Security Standard is unrestricted, allowing:
+
 - Running as root
 - All capabilities
 - Host access
+
 Only use for trusted system workloads.
 
 </details>
@@ -457,9 +472,11 @@ D. CronJob
 <summary>Explanation</summary>
 
 Jobs create pods that run to completion. They ensure tasks finish successfully:
+
 - Batch processing
 - Data processing
 - Backups
+
 Jobs track successful completions and retry failures.
 
 </details>
@@ -480,6 +497,7 @@ D. There is no difference
 
 - **Job**: Runs once, ensures completion
 - **CronJob**: Creates Jobs on a schedule (cron format)
+
 CronJobs are for recurring tasks like backups, reports, cleanup.
 
 </details>
@@ -517,11 +535,15 @@ D. To configure service type
 <summary>Explanation</summary>
 
 Services use selectors to identify target pods. Example:
+
 ```yaml
+
 selector:
   app: web
   tier: frontend
+
 ```
+
 Service routes traffic to pods with matching labels.
 
 </details>
@@ -541,6 +563,7 @@ D. Scheduler
 <summary>Explanation</summary>
 
 The Node Controller is part of the controller-manager. It:
+
 - Monitors node health
 - Manages node lifecycle
 - Evicts pods from unhealthy nodes
@@ -567,6 +590,7 @@ D. When you don't need rolling updates
 <summary>Explanation</summary>
 
 Use StatefulSet when applications require:
+
 - Stable, unique network identities (pod-0, pod-1, etc.)
 - Persistent storage per pod
 - Ordered deployment and scaling
@@ -591,6 +615,7 @@ D. All terminate simultaneously
 <summary>Explanation</summary>
 
 StatefulSets terminate pods in reverse order of their ordinals:
+
 - Creation: pod-0 → pod-1 → pod-2
 - Deletion: pod-2 → pod-1 → pod-0
 
@@ -613,6 +638,7 @@ D. secret
 <summary>Explanation</summary>
 
 PersistentVolumes provide durable storage that persists beyond pod lifecycle. emptyDir is deleted when the pod is removed. PVs enable:
+
 - Data persistence across pod restarts
 - Data migration when pods move nodes
 - Independent storage lifecycle
@@ -634,6 +660,7 @@ D. Storing backup data
 <summary>Explanation</summary>
 
 Sidecar pattern uses:
+
 - Log aggregators (collecting logs to central system)
 - Service mesh proxies (Envoy, Linkerd)
 - Configuration reloaders
@@ -658,6 +685,7 @@ D. External
 <summary>Explanation</summary>
 
 Network Policy directions:
+
 - **Ingress**: Controls incoming traffic TO pods
 - **Egress**: Controls outgoing traffic FROM pods
 
@@ -680,6 +708,7 @@ D. To store secrets
 <summary>Explanation</summary>
 
 hostPath volumes mount a file or directory from the node's filesystem. Use cases:
+
 - Access node-level data
 - Run privileged containers
 - Testing
@@ -703,6 +732,7 @@ D. Docker Engine (without dockershim)
 <summary>Explanation</summary>
 
 CRI-compliant runtimes:
+
 - ✅ containerd (most common)
 - ✅ CRI-O
 - ❌ Docker Engine requires dockershim (deprecated in K8s 1.20, removed in 1.24)
@@ -726,6 +756,7 @@ D. Disk I/O only
 <summary>Explanation</summary>
 
 HPA supports multiple metric sources:
+
 - Resource metrics: CPU, memory (from metrics-server)
 - Custom metrics: Application-specific (via custom metrics API)
 - External metrics: Cloud provider metrics
@@ -749,6 +780,7 @@ D. ReplicaSet
 <summary>Explanation</summary>
 
 DaemonSets run one pod per node, perfect for:
+
 - Node monitoring agents (Prometheus Node Exporter)
 - Log collectors (Fluentd, Filebeat)
 - Storage daemons (Ceph, Gluster)
@@ -771,6 +803,7 @@ D. To handle network routing
 <summary>Explanation</summary>
 
 Scheduler responsibilities:
+
 - Filter nodes that meet pod requirements
 - Score nodes based on optimization rules
 - Select best node for the pod
@@ -795,6 +828,7 @@ D. Store them in ConfigMaps instead
 <summary>Explanation</summary>
 
 Secrets are base64 encoded by default (NOT encrypted). To encrypt:
+
 1. Create encryption configuration
 2. Configure API server with `--encryption-provider-config`
 3. Restart API server
@@ -817,6 +851,7 @@ D. Plain text
 <summary>Explanation</summary>
 
 Important distinction:
+
 - **Encoding (base64)**: Transforms data, easily reversible, NOT security
 - **Encryption**: Uses keys, secure, hard to reverse
 
@@ -839,6 +874,7 @@ D. EvictAll
 <summary>Explanation</summary>
 
 Taint effects:
+
 - **NoSchedule**: Prevents new pods, existing pods stay
 - **PreferNoSchedule**: Soft preference to avoid node
 - **NoExecute**: Evicts existing pods without tolerations AND prevents new pods
@@ -862,16 +898,21 @@ D. Label the pods only
 <summary>Explanation</summary>
 
 Dedicated node pattern:
+
 ```bash
+
 # Taint node
 kubectl taint nodes gpu-node gpu=true:NoSchedule
 
 # GPU pods need toleration
 tolerations:
+
 - key: "gpu"
+
   operator: "Equal"
   value: "true"
   effect: "NoSchedule"
+
 ```
 
 Also add nodeSelector for additional targeting.
@@ -911,6 +952,7 @@ D. ReplicaSet
 <summary>Explanation</summary>
 
 StatefulSets guarantee ordering:
+
 - **Creation**: Sequential (pod-0 first, then pod-1, etc.)
 - **Deletion**: Reverse sequential (pod-N first, down to pod-0)
 - **Updates**: Ordered rolling updates
@@ -937,6 +979,7 @@ D. ConfigMap is only for environment variables
 - **Secret**: Passwords, tokens, SSH keys, TLS certificates
 
 Both can be consumed as:
+
 - Environment variables
 - Command-line arguments
 - Files in volumes
@@ -962,6 +1005,7 @@ D. For monitoring applications
 <summary>Explanation</summary>
 
 Choose ArgoCD when you need:
+
 - GitOps workflow (Git as source of truth)
 - Multi-cluster deployment
 - Automatic synchronization
@@ -987,6 +1031,7 @@ D. To manage network policies
 <summary>Explanation</summary>
 
 Helm is a package manager that:
+
 - Packages apps as charts
 - Manages dependencies
 - Supports versioning and rollback
@@ -1009,12 +1054,13 @@ D. User authentication tokens
 <details>
 <summary>Explanation</summary>
 
-values.yaml contains:
+values.YAML contains:
+
 - Default configuration values
 - Parameters that can be overridden during installation
 - Environment-specific settings
 
-Install with custom values: `helm install myapp mychart -f custom-values.yaml`
+Install with custom values: `helm install myapp mychart -f custom-values.YAML`
 
 </details>
 
@@ -1033,6 +1079,7 @@ D. Recreate
 <summary>Explanation</summary>
 
 Deployment strategies:
+
 - **Rolling update**: Gradual replacement (default)
 - **Blue-green**: Complete switch between environments
 - **Canary**: Gradual traffic shift (e.g., 10% → 50% → 100%)
@@ -1057,6 +1104,7 @@ D. Simpler networking
 <summary>Explanation</summary>
 
 GitOps benefits:
+
 - Git as single source of truth
 - Version control for infrastructure
 - Audit trail (who changed what, when)
@@ -1081,6 +1129,7 @@ D. Service
 <summary>Explanation</summary>
 
 Gateway API resources:
+
 - **GatewayClass**: Defines class of gateways (like IngressClass)
 - **Gateway**: Actual gateway instance that listens for traffic
 - **HTTPRoute/TCPRoute**: Routing rules
@@ -1104,6 +1153,7 @@ D. It uses less memory
 <summary>Explanation</summary>
 
 Gateway API advantages:
+
 - Multi-protocol: Not just HTTP/HTTPS
 - Role-oriented: Infrastructure vs. application teams
 - Expressive: Built-in advanced features
@@ -1127,6 +1177,7 @@ D. To monitor applications
 <summary>Explanation</summary>
 
 Ingress controllers:
+
 - Watch for Ingress resources
 - Configure underlying load balancer (nginx, HAProxy, Traefik)
 - Handle HTTP/HTTPS routing
@@ -1151,6 +1202,7 @@ D. Binary configuration files
 <summary>Explanation</summary>
 
 GitOps core practices:
+
 - Infrastructure/applications described declaratively in Git
 - Automated agents sync Git state to clusters
 - No manual kubectl commands
@@ -1178,6 +1230,7 @@ D. CoreDNS
 <summary>Explanation</summary>
 
 Distributed tracing tools:
+
 - **Jaeger**: CNCF distributed tracing platform
 - **Zipkin**: Twitter's tracing system
 - **OpenTelemetry**: Vendor-neutral observability framework
@@ -1201,10 +1254,12 @@ D. Container images
 <summary>Explanation</summary>
 
 Prometheus collects:
+
 - Metrics: Time-series data (counters, gauges, histograms)
 - Examples: CPU usage, request rate, error rate, response time
 
 Not for:
+
 - Logs (use Fluentd, Loki)
 - Traces (use Jaeger, Zipkin)
 
@@ -1225,6 +1280,7 @@ D. A container event
 <summary>Explanation</summary>
 
 Tracing terminology:
+
 - **Trace**: End-to-end request flow across all services
 - **Span**: Single operation within the trace
 - **Tag**: Metadata attached to spans
@@ -1248,6 +1304,7 @@ D. OnDemand
 <summary>Explanation</summary>
 
 Image pull policies:
+
 - **IfNotPresent**: Pull only if not in local cache (default for tagged images)
 - **Always**: Always pull latest (default for :latest tag)
 - **Never**: Only use local images
@@ -1271,6 +1328,7 @@ D. To compete with major cloud providers
 <summary>Explanation</summary>
 
 CNCF mission:
+
 - Host and nurture cloud-native open-source projects
 - Vendor-neutral governance
 - Foster community and collaboration
@@ -1295,6 +1353,7 @@ D. Single point of failure
 <summary>Explanation</summary>
 
 Cloud-native resilience principles:
+
 - Design for failure (expect components to fail)
 - Circuit breakers
 - Retry and timeout strategies
@@ -1320,6 +1379,7 @@ D. Job
 <summary>Explanation</summary>
 
 Message queues like Kafka require:
+
 - Stable network identity for cluster formation
 - Persistent storage for message retention
 - Ordered deployment for proper initialization
