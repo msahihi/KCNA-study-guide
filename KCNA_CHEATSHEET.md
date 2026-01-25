@@ -384,7 +384,6 @@ spec:
 - **Calico**: Network policy support, BGP
 - **Flannel**: Simple overlay network
 - **Cilium**: eBPF-based, advanced features
-- **Weave Net**: Easy to set up
 
 #### Service Types Quick Reference
 

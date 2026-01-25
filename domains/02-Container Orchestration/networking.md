@@ -19,9 +19,7 @@ Container networking, service discovery, and network policies in Kubernetes.
 - Popular CNI plugins:
   - Calico
   - Flannel
-  - Weave Net
   - Cilium
-  - Canal
 
 ### Services
 

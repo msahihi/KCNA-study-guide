@@ -44,9 +44,7 @@ minikube ssh "cat /etc/cni/net.d/*.conf"
 
 - Calico
 - Flannel
-- Weave Net
 - Cilium
-- Canal
 
 **Inspect pod networking:**
 
