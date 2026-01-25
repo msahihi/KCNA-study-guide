@@ -1,7 +1,9 @@
 # Lab 03: Kubernetes Troubleshooting
 
 ## Objectives
+
 By the end of this lab, you will be able to:
+
 - Use kubectl debug commands effectively
 - Analyze logs and events to diagnose issues
 - Troubleshoot common pod states (ImagePullBackOff, CrashLoopBackOff, Pending)
@@ -10,12 +12,14 @@ By the end of this lab, you will be able to:
 - Apply systematic troubleshooting methodologies
 
 ## Prerequisites
+
 - Running Kubernetes cluster
 - kubectl configured and working
 - Basic understanding of Kubernetes resources
 - Knowledge of Linux commands
 
 ## Estimated Time
+
 90 minutes
 
 ---
@@ -110,6 +114,7 @@ kubectl get limitrange
 ```
 
 **Questions:**
+
 1. What information does `kubectl describe` provide that `kubectl get` doesn't?
 2. When would you use `--previous` with kubectl logs?
 3. How do events help in troubleshooting?
@@ -150,6 +155,7 @@ kubectl get events --field-selector involvedObject.name=imagepull-error
 ```
 
 **Common causes:**
+
 - Typo in image name or tag
 - Image doesn't exist
 - No access to private registry
@@ -213,6 +219,7 @@ kubectl describe pod crashloop-pod | grep -A 5 "State\|Last State\|Restart Count
 ```
 
 **Common causes:**
+
 - Application error/crash
 - Missing environment variables
 - Failed health checks
@@ -305,6 +312,7 @@ kubectl get events | grep pending-pod
 ```
 
 **Common causes:**
+
 - Insufficient resources on nodes
 - Node selector/affinity not matching
 - Taints without tolerations
@@ -399,6 +407,7 @@ spec:
 ```
 
 **Questions:**
+
 1. What's the difference between ImagePullBackOff and ErrImagePull?
 2. How can you prevent CrashLoopBackOff during development?
 3. What's the difference between readiness and liveness probes?
@@ -505,6 +514,7 @@ kubectl exec netshoot -- curl http://my-service.default.svc.cluster.local
 ```
 
 **Questions:**
+
 1. When should you use ephemeral containers vs. copying pods?
 2. What security implications come with node debugging?
 3. What tools should every network debug container include?
@@ -897,6 +907,7 @@ chmod +x debug-pod.sh
 ```
 
 **Questions:**
+
 1. What are the first three commands you should run when troubleshooting a pod?
 2. How do you determine if an issue is application-level or infrastructure-level?
 3. When should you escalate to checking node-level issues?
@@ -978,6 +989,7 @@ Create a broken multi-tier application and systematically troubleshoot it:
    - Provide a "working" version after fixes
 
 **Deliverables:**
+
 - Broken application YAML manifests
 - Troubleshooting documentation
 - Fixed application YAML manifests

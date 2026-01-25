@@ -5,9 +5,11 @@ This domain covers modern application deployment practices and debugging techniq
 ## Topics
 
 ### [Application Delivery](application_delivery.md)
+
 Modern deployment strategies, CI/CD practices, and GitOps principles for cloud-native applications.
 
 ### [Debugging](debugging.md)
+
 Techniques and tools for debugging cloud-native applications in production environments.
 
 ## Related Labs

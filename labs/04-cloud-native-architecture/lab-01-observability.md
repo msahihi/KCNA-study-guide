@@ -1,7 +1,9 @@
 # Lab 01: Cloud Native Observability
 
 ## Objectives
+
 By the end of this lab, you will be able to:
+
 - Understand the three pillars of observability (metrics, logs, traces)
 - Configure Prometheus for metrics collection
 - Create Grafana dashboards for visualization
@@ -10,12 +12,14 @@ By the end of this lab, you will be able to:
 - Apply observability best practices
 
 ## Prerequisites
+
 - Running Kubernetes cluster
 - kubectl configured and working
 - Helm 3 installed
 - Basic understanding of monitoring concepts
 
 ## Estimated Time
+
 120 minutes
 
 ---
@@ -25,11 +29,13 @@ By the end of this lab, you will be able to:
 ### Exercise 1.1: Three Pillars of Observability
 
 **The Three Pillars:**
+
 1. **Metrics**: Numerical measurements over time (CPU, memory, request rate)
 2. **Logs**: Discrete events with context (errors, warnings, info)
 3. **Traces**: Request paths through distributed systems
 
 **Why observability matters:**
+
 - Understand system behavior
 - Detect and diagnose issues
 - Optimize performance
@@ -388,6 +394,7 @@ kubectl apply -f grafana-dashboard.yaml
 ```
 
 **Questions:**
+
 1. What types of metrics does Prometheus collect (counter, gauge, histogram, summary)?
 2. What is the difference between a metric and a label?
 3. How does Prometheus service discovery work in Kubernetes?
@@ -598,6 +605,7 @@ kubectl logs structured-logs-app | jq -s 'group_by(.status) | map({status: .[0].
 ```
 
 **Questions:**
+
 1. What are the advantages of structured logging over plain text?
 2. How do you implement log aggregation in production?
 3. What should be included in every log entry?
@@ -609,6 +617,7 @@ kubectl logs structured-logs-app | jq -s 'group_by(.status) | map({status: .[0].
 ### Exercise 4.1: Understanding Distributed Tracing
 
 **Key concepts:**
+
 - **Trace**: End-to-end journey of a request
 - **Span**: Individual operation within a trace
 - **Context Propagation**: Passing trace information between services
@@ -727,6 +736,7 @@ spec:
 ```
 
 **Questions:**
+
 1. What is the difference between logging and tracing?
 2. How does distributed tracing help debug microservices?
 3. What is context propagation and why is it important?
@@ -738,6 +748,7 @@ spec:
 ### Exercise 5.1: Golden Signals
 
 **Four Golden Signals (from Google SRE):**
+
 1. **Latency**: Time to service a request
 2. **Traffic**: Demand on the system
 3. **Errors**: Rate of failed requests
@@ -829,14 +840,17 @@ curl http://localhost:8080
 ### Exercise 5.2: SLI, SLO, and SLA
 
 **Service Level Indicators (SLI):**
+
 - Metrics that matter to users
 - Examples: availability, latency, error rate
 
 **Service Level Objectives (SLO):**
+
 - Target values for SLIs
 - Example: 99.9% availability, p95 latency < 200ms
 
 **Service Level Agreements (SLA):**
+
 - Contracts with users
 - Consequences if SLO not met
 
@@ -869,6 +883,7 @@ data:
 ```
 
 **Questions:**
+
 1. What are the four golden signals?
 2. What's the difference between SLI, SLO, and SLA?
 3. How do you determine appropriate SLOs?
@@ -1019,6 +1034,7 @@ Create a complete observability stack for a microservices application:
    - SLO violation alerts
 
 **Deliverables:**
+
 - All service manifests
 - Prometheus configuration
 - Grafana dashboards

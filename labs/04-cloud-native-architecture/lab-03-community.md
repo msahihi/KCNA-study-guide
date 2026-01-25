@@ -1,7 +1,9 @@
 # Lab 03: Cloud Native Community and Contribution
 
 ## Objectives
+
 By the end of this lab, you will be able to:
+
 - Understand the structure of the CNCF and Kubernetes community
 - Navigate community resources and communication channels
 - Contribute to open source projects effectively
@@ -10,12 +12,14 @@ By the end of this lab, you will be able to:
 - Build your cloud-native career and network
 
 ## Prerequisites
+
 - GitHub account
 - Basic Git knowledge
 - Understanding of cloud-native concepts
 - Kubernetes fundamentals
 
 ## Estimated Time
+
 90 minutes
 
 ---
@@ -117,6 +121,7 @@ cat governance.md
 ```
 
 **Questions:**
+
 1. What is the role of the TOC in CNCF?
 2. How many Kubernetes SIGs are there?
 3. What's the difference between a SIG and a Working Group?
@@ -256,6 +261,7 @@ data:
 ```
 
 **Questions:**
+
 1. Where do you ask beginner questions about Kubernetes?
 2. How do you find SIG meeting times?
 3. What's the best way to stay updated on Kubernetes news?
@@ -457,6 +463,7 @@ kubectl apply -f test-manifest.yaml
 ```
 
 **Questions:**
+
 1. What makes a good first contribution?
 2. How do you find issues to work on?
 3. What should be included in a PR description?
@@ -595,6 +602,7 @@ EOF
 ```
 
 **Questions:**
+
 1. How do you become an organization member?
 2. What's the difference between reviewer and approver?
 3. How do you choose which SIG to join?
@@ -606,11 +614,13 @@ EOF
 ### Exercise 5.1: KubeCon + CloudNativeCon
 
 **About KubeCon:**
+
 - Largest Kubernetes and cloud-native conference
 - Held 3 times per year (North America, Europe, China)
 - Includes talks, workshops, and networking
 
 **Types of sessions:**
+
 - Keynotes
 - Maintainer Track Talks
 - End User Track Talks
@@ -715,6 +725,7 @@ data:
 ```
 
 **Questions:**
+
 1. How often does KubeCon happen?
 2. What is a Contributor Summit?
 3. How can CNCF support local meetups?
@@ -852,6 +863,7 @@ EOF
 ```
 
 **Questions:**
+
 1. Which certification should you get first?
 2. How do you showcase your contributions?
 3. Where can you find mentors?
@@ -898,7 +910,7 @@ data:
     - Confidentiality is maintained
 ```
 
-**Full CoC:** https://github.com/cncf/foundation/blob/master/code-of-conduct.md
+**Full CoC:** <https://github.com/cncf/foundation/blob/master/code-of-conduct.md>
 
 ### Exercise 7.2: Community Best Practices
 
@@ -939,6 +951,7 @@ data:
 ```
 
 **Questions:**
+
 1. What should you do if you witness CoC violations?
 2. How should you handle disagreements?
 3. What makes a good community member?
@@ -1003,6 +1016,7 @@ Complete a real contribution to the Kubernetes ecosystem:
    - Help others do the same
 
 **Deliverables:**
+
 - Link to your contribution (PR, issue, etc.)
 - Reflection document
 - Blog post or presentation

@@ -1,6 +1,7 @@
 # Observability
 
 ## Overview
+
 Monitoring, logging, and tracing practices for cloud-native applications.
 
 ## Key Topics
@@ -8,18 +9,21 @@ Monitoring, logging, and tracing practices for cloud-native applications.
 ### The Three Pillars of Observability
 
 #### 1. Metrics
+
 - Quantitative measurements over time
 - Time-series data
 - Aggregatable and mathematical operations
 - Lower storage overhead
 
 #### 2. Logs
+
 - Discrete events with timestamps
 - Detailed contextual information
 - Searchable and filterable
 - Higher storage requirements
 
 #### 3. Traces
+
 - Request flow across services
 - Performance bottleneck identification
 - Service dependency mapping
@@ -28,12 +32,14 @@ Monitoring, logging, and tracing practices for cloud-native applications.
 ### Monitoring Concepts
 
 #### Types of Monitoring
+
 - **Infrastructure Monitoring**: Node health, resource usage
 - **Application Monitoring**: Application metrics, performance
 - **Synthetic Monitoring**: Proactive testing of endpoints
 - **Real User Monitoring (RUM)**: Actual user experience data
 
 #### Key Metrics
+
 - **RED Method** (for services):
   - Rate: Requests per second
   - Errors: Failed requests
@@ -53,6 +59,7 @@ Monitoring, logging, and tracing practices for cloud-native applications.
 ### Prometheus
 
 #### Overview
+
 - Open-source monitoring and alerting toolkit
 - CNCF graduated project
 - Time-series database
@@ -60,12 +67,14 @@ Monitoring, logging, and tracing practices for cloud-native applications.
 - PromQL query language
 
 #### Architecture Components
+
 - **Prometheus Server**: Scrapes and stores metrics
 - **Exporters**: Expose metrics from applications
 - **Alertmanager**: Handles alerts
 - **Pushgateway**: For short-lived jobs
 
 #### Metrics Types
+
 - **Counter**: Cumulative value that only increases
 - **Gauge**: Value that can go up or down
 - **Histogram**: Observations in configurable buckets
@@ -74,12 +83,14 @@ Monitoring, logging, and tracing practices for cloud-native applications.
 ### Grafana
 
 #### Overview
+
 - Visualization and analytics platform
 - Multi-datasource support
 - Dashboarding and alerting
 - Rich plugin ecosystem
 
 #### Features
+
 - Custom dashboards
 - Templated dashboards
 - Alert rules and notifications
@@ -88,17 +99,20 @@ Monitoring, logging, and tracing practices for cloud-native applications.
 ### Logging in Cloud Native
 
 #### Logging Patterns
+
 - Centralized logging
 - Structured logging (JSON)
 - Log aggregation
 - Log rotation and retention
 
 #### Log Collection
+
 - **Fluentd/Fluent Bit**: Log collector and processor
 - **Logstash**: Data processing pipeline
 - **Vector**: High-performance observability data pipeline
 
 #### Log Storage and Analysis
+
 - **Elasticsearch**: Search and analytics engine
 - **Loki**: Log aggregation system (Prometheus-like)
 - **Splunk**: Enterprise logging platform
@@ -106,12 +120,14 @@ Monitoring, logging, and tracing practices for cloud-native applications.
 ### Distributed Tracing
 
 #### Concepts
+
 - **Span**: Single operation in a trace
 - **Trace**: Collection of spans representing a request
 - **Context Propagation**: Passing trace context across services
 - **Sampling**: Selecting which traces to record
 
 #### Tracing Tools
+
 - **Jaeger**: End-to-end distributed tracing
 - **Zipkin**: Distributed tracing system
 - **OpenTelemetry**: Unified observability framework
@@ -119,12 +135,14 @@ Monitoring, logging, and tracing practices for cloud-native applications.
 ### OpenTelemetry
 
 #### Overview
+
 - CNCF observability framework
 - Vendor-neutral APIs and SDKs
 - Unified approach to metrics, logs, and traces
 - Automatic instrumentation support
 
 #### Components
+
 - **API**: Language-specific interfaces
 - **SDK**: Implementation of the API
 - **Collector**: Receive, process, and export telemetry
@@ -133,12 +151,14 @@ Monitoring, logging, and tracing practices for cloud-native applications.
 ### Service Mesh Observability
 
 #### Service Mesh Features
+
 - Automatic metrics collection
 - Distributed tracing
 - Traffic visualization
 - Service topology mapping
 
 #### Popular Service Meshes
+
 - **Istio**: Feature-rich service mesh
 - **Linkerd**: Lightweight service mesh
 - **Consul**: Service networking solution
@@ -146,6 +166,7 @@ Monitoring, logging, and tracing practices for cloud-native applications.
 ## Examples
 
 ### Prometheus Metrics Endpoint
+
 ```python
 from prometheus_client import Counter, Gauge, Histogram, start_http_server
 import time
@@ -166,6 +187,7 @@ with REQUEST_DURATION.time():
 ```
 
 ### Prometheus Configuration
+
 ```yaml
 global:
   scrape_interval: 15s
@@ -186,6 +208,7 @@ scrape_configs:
 ```
 
 ### PromQL Queries
+
 ```promql
 # CPU usage by pod
 rate(container_cpu_usage_seconds_total[5m])
@@ -204,6 +227,7 @@ rate(http_requests_total{status=~"5.."}[5m])
 ```
 
 ### Grafana Dashboard JSON (excerpt)
+
 ```json
 {
   "dashboard": {
@@ -225,6 +249,7 @@ rate(http_requests_total{status=~"5.."}[5m])
 ```
 
 ### Structured Logging Example
+
 ```json
 {
   "timestamp": "2026-01-25T10:30:45.123Z",
@@ -241,6 +266,7 @@ rate(http_requests_total{status=~"5.."}[5m])
 ```
 
 ### OpenTelemetry Instrumentation (Python)
+
 ```python
 from opentelemetry import trace
 from opentelemetry.sdk.trace import TracerProvider
@@ -279,17 +305,20 @@ with tracer.start_as_current_span("process_order"):
 ## Common Observability Patterns
 
 ### Golden Signals Dashboard
+
 - Request rate (traffic)
 - Error rate
 - Request duration (latency)
 - Resource saturation
 
 ### SLI/SLO/SLA
+
 - **SLI**: Service Level Indicator (actual measurement)
 - **SLO**: Service Level Objective (target)
 - **SLA**: Service Level Agreement (contract)
 
 ### Alert Fatigue Prevention
+
 - Set meaningful thresholds
 - Use proper alert severity
 - Implement alert grouping
@@ -297,6 +326,7 @@ with tracer.start_as_current_span("process_order"):
 - Regularly review and tune alerts
 
 ## Study Resources
+
 - [Prometheus Documentation](https://prometheus.io/docs/)
 - [Grafana Documentation](https://grafana.com/docs/)
 - [OpenTelemetry Documentation](https://opentelemetry.io/docs/)
@@ -304,6 +334,7 @@ with tracer.start_as_current_span("process_order"):
 - [The Three Pillars of Observability](https://www.oreilly.com/library/view/distributed-systems-observability/9781492033431/)
 
 ## Key Points to Remember
+
 - Observability enables understanding system behavior from outputs
 - Metrics, logs, and traces provide complementary insights
 - Prometheus is the de facto standard for Kubernetes metrics
@@ -314,4 +345,5 @@ with tracer.start_as_current_span("process_order"):
 - Create dashboards for key business and technical metrics
 
 ## Hands-On Practice
+
 - [Lab 01: Observability](../../labs/04-cloud-native-architecture/lab-01-observability.md) - Practical exercises covering Prometheus, Grafana, logging, metrics, and alerting

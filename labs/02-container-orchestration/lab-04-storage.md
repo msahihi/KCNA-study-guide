@@ -1,7 +1,9 @@
 # Lab 04: Kubernetes Storage
 
 ## Objectives
+
 By the end of this lab, you will be able to:
+
 - Understand different volume types in Kubernetes
 - Work with PersistentVolumes (PV) and PersistentVolumeClaims (PVC)
 - Configure StorageClasses for dynamic provisioning
@@ -10,12 +12,14 @@ By the end of this lab, you will be able to:
 - Apply storage best practices
 
 ## Prerequisites
+
 - Running Kubernetes cluster
 - kubectl configured and working
 - Basic understanding of storage concepts
 - Cluster with storage provisioner (or local storage)
 
 ## Estimated Time
+
 90 minutes
 
 ---
@@ -168,6 +172,7 @@ kubectl exec hostpath-pod -- ls -la /host-data
 ```
 
 **Questions:**
+
 1. When is data in an emptyDir deleted?
 2. What are the security implications of hostPath?
 3. When would you use emptyDir with medium: Memory?
@@ -313,6 +318,7 @@ kubectl exec secret-volume-pod -- cat /etc/tls/tls.crt
 ```
 
 **Questions:**
+
 1. What happens when you update a ConfigMap mounted as a volume?
 2. How long does it take for ConfigMap changes to propagate to pods?
 3. What's the difference between subPath and mounting the entire volume?
@@ -431,6 +437,7 @@ kubectl exec pvc-pod -- curl localhost
 ### Exercise 3.3: Access Modes
 
 Kubernetes supports three access modes:
+
 - **ReadWriteOnce (RWO)**: Volume can be mounted as read-write by a single node
 - **ReadOnlyMany (ROX)**: Volume can be mounted as read-only by many nodes
 - **ReadWriteMany (RWX)**: Volume can be mounted as read-write by many nodes
@@ -521,6 +528,7 @@ spec:
 ```
 
 **Questions:**
+
 1. What happens to a PV when its PVC is deleted with Retain policy?
 2. Can you bind a PVC requesting ReadWriteMany to a PV with ReadWriteOnce?
 3. What's the difference between Delete and Retain reclaim policies?
@@ -661,6 +669,7 @@ kubectl describe pvc dynamic-pvc
 ```
 
 **Questions:**
+
 1. What does WaitForFirstConsumer do in volumeBindingMode?
 2. Can all volume types be expanded?
 3. What happens to data during volume expansion?
@@ -791,6 +800,7 @@ kubectl get pvc
 ```
 
 **Questions:**
+
 1. How does StatefulSet differ from Deployment in terms of storage?
 2. What happens to PVCs when you scale down a StatefulSet?
 3. Why does StatefulSet need a headless service?
@@ -1017,6 +1027,7 @@ Create a complete stateful application with:
    - Test backup and restore
 
 **Deliverables:**
+
 - All YAML manifests
 - Backup/restore procedures
 - Test scripts

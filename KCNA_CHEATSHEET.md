@@ -22,6 +22,7 @@
 #### Kubernetes Architecture
 
 **Control Plane Components:**
+
 - **API Server** (`kube-apiserver`): Frontend for Kubernetes control plane
 - **etcd**: Key-value store for cluster data
 - **Scheduler** (`kube-scheduler`): Assigns pods to nodes
@@ -29,6 +30,7 @@
 - **Cloud Controller Manager**: Integrates with cloud providers
 
 **Node Components:**
+
 - **kubelet**: Agent that runs on each node
 - **kube-proxy**: Network proxy on each node
 - **Container Runtime**: containerd, CRI-O, Docker (deprecated)
@@ -36,6 +38,7 @@
 #### Core Objects
 
 **Pod**
+
 ```yaml
 apiVersion: v1
 kind: Pod
@@ -52,6 +55,7 @@ spec:
 ```
 
 **Deployment**
+
 ```yaml
 apiVersion: apps/v1
 kind: Deployment
@@ -73,6 +77,7 @@ spec:
 ```
 
 **Service Types:**
+
 - **ClusterIP** (default): Internal cluster access
 - **NodePort**: Exposes on each node's IP at static port
 - **LoadBalancer**: Cloud provider load balancer
@@ -80,6 +85,7 @@ spec:
 - **Headless**: ClusterIP set to None for direct pod access
 
 **Service Example:**
+
 ```yaml
 apiVersion: v1
 kind: Service
@@ -111,6 +117,7 @@ spec:
 <summary><strong>Administration</strong></summary>
 
 #### ConfigMaps
+
 ```yaml
 apiVersion: v1
 kind: ConfigMap
@@ -122,6 +129,7 @@ data:
 ```
 
 **Using ConfigMap:**
+
 ```yaml
 # As environment variables
 env:
@@ -139,6 +147,7 @@ volumes:
 ```
 
 #### Secrets
+
 ```yaml
 apiVersion: v1
 kind: Secret
@@ -151,6 +160,7 @@ data:
 ```
 
 **Using Secrets:**
+
 ```yaml
 env:
 - name: DB_PASSWORD
@@ -163,6 +173,7 @@ env:
 #### RBAC (Role-Based Access Control)
 
 **Role:**
+
 ```yaml
 apiVersion: rbac.authorization.k8s.io/v1
 kind: Role
@@ -176,6 +187,7 @@ rules:
 ```
 
 **RoleBinding:**
+
 ```yaml
 apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
@@ -193,12 +205,14 @@ roleRef:
 ```
 
 **Key Differences:**
+
 - **Role/RoleBinding**: Namespace-scoped
 - **ClusterRole/ClusterRoleBinding**: Cluster-wide
 
 #### Resource Management
 
 **Resource Requests & Limits:**
+
 ```yaml
 resources:
   requests:
@@ -210,6 +224,7 @@ resources:
 ```
 
 **ResourceQuota:**
+
 ```yaml
 apiVersion: v1
 kind: ResourceQuota
@@ -226,6 +241,7 @@ spec:
 ```
 
 **LimitRange:**
+
 ```yaml
 apiVersion: v1
 kind: LimitRange
@@ -246,6 +262,7 @@ spec:
 <summary><strong>Scheduling</strong></summary>
 
 #### Node Selector
+
 ```yaml
 spec:
   nodeSelector:
@@ -253,6 +270,7 @@ spec:
 ```
 
 #### Node Affinity
+
 ```yaml
 spec:
   affinity:
@@ -267,6 +285,7 @@ spec:
 ```
 
 #### Pod Affinity/Anti-Affinity
+
 ```yaml
 spec:
   affinity:
@@ -284,11 +303,13 @@ spec:
 #### Taints and Tolerations
 
 **Taint a node:**
+
 ```bash
 kubectl taint nodes node1 key=value:NoSchedule
 ```
 
 **Toleration:**
+
 ```yaml
 spec:
   tolerations:
@@ -299,6 +320,7 @@ spec:
 ```
 
 **Taint Effects:**
+
 - **NoSchedule**: Don't schedule new pods
 - **PreferNoSchedule**: Try not to schedule
 - **NoExecute**: Evict existing pods
@@ -309,6 +331,7 @@ spec:
 <summary><strong>Containerization</strong></summary>
 
 #### Container Runtimes
+
 - **containerd**: Industry standard, CNCF graduated
 - **CRI-O**: Lightweight, OCI-compliant
 - **Docker**: Deprecated in K8s 1.24+
@@ -316,6 +339,7 @@ spec:
 #### Multi-Container Patterns
 
 **Sidecar Pattern:**
+
 ```yaml
 spec:
   containers:
@@ -326,6 +350,7 @@ spec:
 ```
 
 **Init Container:**
+
 ```yaml
 spec:
   initContainers:
@@ -338,6 +363,7 @@ spec:
 ```
 
 #### Image Best Practices
+
 - Use specific tags (avoid `:latest`)
 - Use small base images (alpine, distroless)
 - Run as non-root user
@@ -354,6 +380,7 @@ spec:
 <summary><strong>Networking</strong></summary>
 
 #### CNI Plugins
+
 - **Calico**: Network policy support, BGP
 - **Flannel**: Simple overlay network
 - **Cilium**: eBPF-based, advanced features
@@ -369,6 +396,7 @@ spec:
 | ExternalName | DNS mapping | CNAME |
 
 #### Ingress
+
 ```yaml
 apiVersion: networking.k8s.io/v1
 kind: Ingress
@@ -389,6 +417,7 @@ spec:
 ```
 
 #### Network Policy
+
 ```yaml
 apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
@@ -411,6 +440,7 @@ spec:
 ```
 
 #### DNS in Kubernetes
+
 - Service: `<service-name>.<namespace>.svc.cluster.local`
 - Pod: `<pod-ip>.<namespace>.pod.cluster.local`
 - Headless service pod: `<pod-name>.<service-name>.<namespace>.svc.cluster.local`
@@ -421,6 +451,7 @@ spec:
 <summary><strong>Security</strong></summary>
 
 #### Security Context
+
 ```yaml
 spec:
   securityContext:
@@ -446,6 +477,7 @@ spec:
 | **Restricted** | Heavily restricted, hardened best practices |
 
 #### Security Best Practices
+
 - ✅ Run as non-root
 - ✅ Use read-only root filesystem
 - ✅ Drop all capabilities, add only required
@@ -474,23 +506,27 @@ spec:
 #### Common Error States
 
 **ImagePullBackOff**
+
 - Wrong image name/tag
 - No access to private registry
 - Image doesn't exist
 
 **CrashLoopBackOff**
+
 - Application error on startup
 - Missing configuration
 - Health check failures
 - Insufficient resources
 
 **Pending**
+
 - Insufficient resources
 - Taints without tolerations
 - Node selector doesn't match
 - PVC not bound
 
 #### Debug Commands
+
 ```bash
 # View pod details
 kubectl describe pod <pod-name>
@@ -534,6 +570,7 @@ kubectl top pods
 #### PersistentVolume & PersistentVolumeClaim
 
 **PV:**
+
 ```yaml
 apiVersion: v1
 kind: PersistentVolume
@@ -551,6 +588,7 @@ spec:
 ```
 
 **PVC:**
+
 ```yaml
 apiVersion: v1
 kind: PersistentVolumeClaim
@@ -566,17 +604,20 @@ spec:
 ```
 
 #### Access Modes
+
 - **ReadWriteOnce (RWO)**: Single node read-write
 - **ReadOnlyMany (ROX)**: Multiple nodes read-only
 - **ReadWriteMany (RWX)**: Multiple nodes read-write
 - **ReadWriteOncePod (RWOP)**: Single pod read-write
 
 #### Reclaim Policies
+
 - **Retain**: Manual reclamation
 - **Delete**: Auto-delete storage
 - **Recycle**: Deprecated
 
 #### StorageClass
+
 ```yaml
 apiVersion: storage.k8s.io/v1
 kind: StorageClass
@@ -601,6 +642,7 @@ volumeBindingMode: WaitForFirstConsumer
 <summary><strong>Deployment Strategies</strong></summary>
 
 #### Rolling Update (Default)
+
 ```yaml
 spec:
   strategy:
@@ -611,6 +653,7 @@ spec:
 ```
 
 **Commands:**
+
 ```bash
 # Update image
 kubectl set image deployment/app app=app:v2
@@ -626,11 +669,13 @@ kubectl rollout undo deployment/app
 ```
 
 #### Blue-Green Deployment
+
 1. Deploy new version (green)
 2. Switch service selector to green
 3. Remove old version (blue)
 
 #### Canary Deployment
+
 1. Deploy small number of new version
 2. Monitor metrics
 3. Gradually increase new version replicas
@@ -665,6 +710,7 @@ helm uninstall my-release
 ```
 
 **Chart Structure:**
+
 ```
 mychart/
 ├── Chart.yaml
@@ -687,6 +733,7 @@ mychart/
 4. **Reconciled**: Continuous sync of actual vs desired
 
 **GitOps Tools:**
+
 - **Flux**: Kubernetes operator
 - **Argo CD**: Declarative CD
 - **Jenkins X**: Complete CI/CD
@@ -699,6 +746,7 @@ mychart/
 #### Health Probes
 
 **Liveness Probe:**
+
 ```yaml
 livenessProbe:
   httpGet:
@@ -711,6 +759,7 @@ livenessProbe:
 ```
 
 **Readiness Probe:**
+
 ```yaml
 readinessProbe:
   httpGet:
@@ -721,6 +770,7 @@ readinessProbe:
 ```
 
 **Startup Probe:**
+
 ```yaml
 startupProbe:
   httpGet:
@@ -731,11 +781,13 @@ startupProbe:
 ```
 
 #### Probe Types
+
 - **httpGet**: HTTP GET request
 - **tcpSocket**: TCP connection
 - **exec**: Execute command
 
 #### Graceful Shutdown
+
 ```yaml
 lifecycle:
   preStop:
@@ -752,9 +804,8 @@ lifecycle:
 <details>
 <summary><strong>Cloud Native Definition (CNCF)</strong></summary>
 
-
-
 Cloud native technologies empower organizations to build and run **scalable applications** in modern, dynamic environments. Key characteristics:
+
 - **Containerized**
 - **Dynamically orchestrated**
 - **Microservices oriented**
@@ -784,37 +835,46 @@ Cloud native technologies empower organizations to build and run **scalable appl
 <summary><strong>Observability - Three Pillars</strong></summary>
 
 #### 1. Metrics
+
 **Types:**
+
 - Counter (only increases)
 - Gauge (up/down)
 - Histogram (distribution)
 - Summary (quantiles)
 
 **Golden Signals:**
+
 - Latency
 - Traffic
 - Errors
 - Saturation
 
 **RED Method:**
+
 - Rate
 - Errors
 - Duration
 
 **USE Method:**
+
 - Utilization
 - Saturation
 - Errors
 
 #### 2. Logs
+
 **Best Practices:**
+
 - Use structured logging (JSON)
 - Include correlation IDs
 - Centralize logs
 - Set retention policies
 
 #### 3. Traces
+
 **Components:**
+
 - **Span**: Single operation
 - **Trace**: Collection of spans
 - **Context**: Propagated metadata
@@ -825,6 +885,7 @@ Cloud native technologies empower organizations to build and run **scalable appl
 <summary><strong>Prometheus Basics</strong></summary>
 
 **PromQL Examples:**
+
 ```promql
 # CPU usage rate
 rate(container_cpu_usage_seconds_total[5m])
@@ -845,6 +906,7 @@ histogram_quantile(0.95, rate(http_request_duration_seconds_bucket[5m]))
 <summary><strong>CNCF Landscape - Key Projects</strong></summary>
 
 #### Graduated Projects
+
 - **Kubernetes**: Container orchestration
 - **Prometheus**: Monitoring
 - **Envoy**: Cloud-native proxy
@@ -855,6 +917,7 @@ histogram_quantile(0.95, rate(http_request_duration_seconds_bucket[5m]))
 - **CoreDNS**: DNS server
 
 #### Incubating Projects
+
 - **Argo**: GitOps CD
 - **Flux**: GitOps operator
 - **Linkerd**: Service mesh
@@ -866,12 +929,14 @@ histogram_quantile(0.95, rate(http_request_duration_seconds_bucket[5m]))
 <summary><strong>Service Mesh</strong></summary>
 
 **Capabilities:**
+
 - Traffic management
 - Security (mTLS)
 - Observability
 - Policy enforcement
 
 **Popular Options:**
+
 - **Istio**: Feature-rich
 - **Linkerd**: Lightweight
 - **Consul**: Service networking
@@ -882,22 +947,26 @@ histogram_quantile(0.95, rate(http_request_duration_seconds_bucket[5m]))
 <summary><strong>CNCF & Kubernetes Community</strong></summary>
 
 #### Structure
+
 - **TOC**: Technical Oversight Committee
 - **SIGs**: Special Interest Groups
 - **WGs**: Working Groups
 
 #### Communication Channels
+
 - Kubernetes Slack
 - CNCF Slack
 - Mailing lists
 - GitHub Discussions
 
 #### Events
+
 - **KubeCon + CloudNativeCon**: Flagship event
 - **Kubernetes Community Days**: Local events
 - **Meetups**: Regular gatherings
 
 #### Contributing
+
 1. Find a project
 2. Look for "good first issue"
 3. Read contribution guidelines
@@ -914,7 +983,6 @@ histogram_quantile(0.95, rate(http_request_duration_seconds_bucket[5m]))
 
 <details>
 <summary><strong>Context & Configuration</strong></summary>
-
 
 ```bash
 # View contexts
@@ -1068,7 +1136,6 @@ kubectl create service clusterip nginx --tcp=80:80 --dry-run=client -o yaml
 <details>
 <summary><strong>Resource Shortnames</strong></summary>
 
-
 | Full Name | Shortname |
 |-----------|-----------|
 | pods | po |
@@ -1090,7 +1157,6 @@ kubectl create service clusterip nginx --tcp=80:80 --dry-run=client -o yaml
 
 <details>
 <summary><strong>API Groups</strong></summary>
-
 
 | Resource | API Group | API Version |
 |----------|-----------|-------------|
@@ -1123,13 +1189,13 @@ metadata:
 <details>
 <summary><strong>Container Resource Units</strong></summary>
 
-
 | Resource | Unit | Example |
 |----------|------|---------|
 | CPU | Millicores | 250m = 0.25 CPU |
 | Memory | Bytes | 64Mi, 1Gi |
 
 ### Port Ranges
+
 | Type | Range |
 |------|-------|
 | NodePort | 30000-32767 |
@@ -1145,8 +1211,8 @@ metadata:
 <details>
 <summary><strong>Security Best Practices</strong></summary>
 
-
 ✅ **DO:**
+
 - Run containers as non-root
 - Use read-only root filesystem
 - Drop all capabilities, add only needed
@@ -1157,6 +1223,7 @@ metadata:
 - Use Pod Security Standards
 
 ❌ **DON'T:**
+
 - Run privileged containers
 - Use latest tag in production
 - Store secrets in ConfigMaps
@@ -1238,7 +1305,6 @@ metadata:
 <details>
 <summary><strong>Practice</strong></summary>
 
-
 - [Killercoda](https://killercoda.com/playgrounds)
 - [Play with Kubernetes](https://labs.play-with-k8s.com/)
 
@@ -1248,8 +1314,8 @@ metadata:
 <summary><strong>Community</strong></summary>
 
 - [Kubernetes Slack](https://kubernetes.slack.com/)
-- [CNCF Slack #kcna-exam-prep](https://cloud-native.slack.com)
-- [r/kubernetes](https://reddit.com/r/kubernetes)
+- [CNCF Slack #KCNA-exam-prep](https://cloud-native.slack.com)
+- [r/Kubernetes](https://reddit.com/r/kubernetes)
 
 </details>
 

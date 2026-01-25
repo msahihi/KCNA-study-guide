@@ -1,7 +1,9 @@
 # Lab 02: Application Debugging and Health Checks
 
 ## Objectives
+
 By the end of this lab, you will be able to:
+
 - Debug application-level issues in Kubernetes
 - Configure and use liveness, readiness, and startup probes
 - Implement proper logging strategies
@@ -10,12 +12,14 @@ By the end of this lab, you will be able to:
 - Apply best practices for observability
 
 ## Prerequisites
+
 - Running Kubernetes cluster
 - kubectl configured and working
 - Completed troubleshooting lab
 - Basic understanding of application debugging
 
 ## Estimated Time
+
 90 minutes
 
 ---
@@ -25,11 +29,13 @@ By the end of this lab, you will be able to:
 ### Exercise 1.1: Understanding Probe Types
 
 **Probe types:**
+
 - **Liveness Probe**: Detects if container is alive (restart if fails)
 - **Readiness Probe**: Detects if container is ready to accept traffic
 - **Startup Probe**: Detects if application has started (for slow-starting apps)
 
 **Probe mechanisms:**
+
 - HTTP GET
 - TCP Socket
 - Exec command
@@ -248,6 +254,7 @@ kubectl describe pod startup-probe
 ```
 
 **Questions:**
+
 1. What happens if both liveness and readiness probes fail?
 2. When should you use startup probe instead of increasing liveness initialDelaySeconds?
 3. How do probes affect zero-downtime deployments?
@@ -489,6 +496,7 @@ kubectl logs json-logging-app | jq -r '"\(.timestamp) \(.level) \(.message)"'
 ```
 
 **Questions:**
+
 1. Why is structured logging (JSON) better than plain text?
 2. How do you correlate logs across multiple pods?
 3. What information should always be in application logs?
@@ -822,6 +830,7 @@ kubectl logs traced-app | jq "select(.trace_id==\"$TRACE_ID\")"
 ```
 
 **Questions:**
+
 1. When should you use sidecar containers for logging?
 2. How do you prevent logs from filling up disk space?
 3. What's the difference between application logs and audit logs?
@@ -1068,6 +1077,7 @@ Create a production-ready application with:
    - Verify zero-downtime updates
 
 **Deliverables:**
+
 - Application code/container
 - Kubernetes manifests
 - Health check implementation

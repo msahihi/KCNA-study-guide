@@ -1,6 +1,7 @@
 # Lab 01: Kubernetes Core Concepts
 
 ## Objectives
+
 - Understand Kubernetes architecture components
 - Create and manage Pods
 - Work with Deployments and ReplicaSets
@@ -8,12 +9,14 @@
 - Work with Namespaces
 
 ## Prerequisites
+
 - Access to a Kubernetes cluster (minikube, kind, or cloud provider)
 - kubectl installed and configured
 
 ## Exercise 1: Explore Cluster Components
 
 ### Task 1.1: Check Cluster Information
+
 ```bash
 # Get cluster info
 kubectl cluster-info
@@ -29,6 +32,7 @@ kubectl get pods -n kube-system
 ```
 
 **Questions:**
+
 1. What components are running in the kube-system namespace?
 2. What is the role of the kube-apiserver?
 3. How many nodes are in your cluster?
@@ -36,7 +40,9 @@ kubectl get pods -n kube-system
 ## Exercise 2: Working with Pods
 
 ### Task 2.1: Create a Simple Pod
+
 Create a file `nginx-pod.yaml`:
+
 ```yaml
 apiVersion: v1
 kind: Pod
@@ -71,7 +77,9 @@ kubectl exec nginx-pod -- nginx -v
 ```
 
 ### Task 2.2: Create a Multi-Container Pod
+
 Create `multi-container-pod.yaml`:
+
 ```yaml
 apiVersion: v1
 kind: Pod
@@ -113,13 +121,16 @@ kubectl logs multi-container-pod -c debian
 ```
 
 **Questions:**
+
 1. How do containers in the same pod share data?
 2. What is the purpose of the emptyDir volume?
 
 ## Exercise 3: Working with Deployments
 
 ### Task 3.1: Create a Deployment
+
 Create `nginx-deployment.yaml`:
+
 ```yaml
 apiVersion: apps/v1
 kind: Deployment
@@ -165,6 +176,7 @@ kubectl get pods -l app=nginx
 ```
 
 ### Task 3.2: Update a Deployment
+
 ```bash
 # Update the image
 kubectl set image deployment/nginx-deployment nginx=nginx:1.22
@@ -183,13 +195,16 @@ kubectl rollout undo deployment/nginx-deployment --to-revision=1
 ```
 
 **Questions:**
+
 1. What is the difference between a Pod and a Deployment?
 2. How does a Deployment ensure the desired number of pods?
 
 ## Exercise 4: Working with Services
 
 ### Task 4.1: Create a ClusterIP Service
+
 Create `nginx-service.yaml`:
+
 ```yaml
 apiVersion: v1
 kind: Service
@@ -222,7 +237,9 @@ kubectl run curl-test --image=curlimages/curl -i --rm --restart=Never -- curl ng
 ```
 
 ### Task 4.2: Create a NodePort Service
+
 Create `nginx-nodeport.yaml`:
+
 ```yaml
 apiVersion: v1
 kind: Service
@@ -252,6 +269,7 @@ minikube service nginx-nodeport --url
 ## Exercise 5: Working with Namespaces
 
 ### Task 5.1: Create and Use Namespaces
+
 ```bash
 # List all namespaces
 kubectl get namespaces
@@ -273,7 +291,9 @@ kubectl config set-context --current --namespace=dev
 ```
 
 ### Task 5.2: Resource Quotas in Namespaces
+
 Create `dev-quota.yaml`:
+
 ```yaml
 apiVersion: v1
 kind: ResourceQuota
@@ -303,6 +323,7 @@ kubectl describe resourcequota dev-quota -n dev
 ## Exercise 6: Labels and Selectors
 
 ### Task 6.1: Working with Labels
+
 ```bash
 # Add a label to a pod
 kubectl label pod nginx-pod environment=production
@@ -322,6 +343,7 @@ kubectl label pod nginx-pod environment-
 ```
 
 ### Task 6.2: Using Selectors
+
 ```bash
 # Equality-based selector
 kubectl get pods -l app=nginx,tier=frontend
@@ -332,6 +354,7 @@ kubectl get pods -l 'tier,tier notin (backend)'
 ```
 
 ## Cleanup
+
 ```bash
 # Delete all resources created in default namespace
 kubectl delete deployment nginx-deployment
@@ -345,6 +368,7 @@ kubectl delete namespace dev
 ## Challenge Exercise
 
 Create a complete application stack with:
+
 1. A namespace called "myapp"
 2. A deployment with 3 replicas running nginx
 3. A ClusterIP service exposing the deployment
@@ -363,5 +387,6 @@ Create a complete application stack with:
 - [ ] Used labels and selectors
 
 ## Additional Resources
+
 - [Kubernetes Concepts](https://kubernetes.io/docs/concepts/)
 - [kubectl Cheat Sheet](https://kubernetes.io/docs/reference/kubectl/cheatsheet/)

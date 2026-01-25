@@ -1,11 +1,13 @@
 # Troubleshooting
 
 ## Overview
+
 Debugging techniques and tools for diagnosing issues in Kubernetes clusters.
 
 ## Key Topics
 
 ### Troubleshooting Methodology
+
 1. Identify the problem
 2. Gather information
 3. Form a hypothesis
@@ -14,6 +16,7 @@ Debugging techniques and tools for diagnosing issues in Kubernetes clusters.
 6. Verify the fix
 
 ### Common Issues
+
 - Pod not starting (ImagePullBackOff, CrashLoopBackOff)
 - Service connectivity problems
 - Resource constraints (CPU, memory)
@@ -24,6 +27,7 @@ Debugging techniques and tools for diagnosing issues in Kubernetes clusters.
 ### kubectl Debugging Commands
 
 #### View Resource Status
+
 ```bash
 # Get pods with wide output
 kubectl get pods -o wide
@@ -41,6 +45,7 @@ kubectl logs <pod-name> --previous  # previous container logs
 ```
 
 #### Interactive Debugging
+
 ```bash
 # Execute command in container
 kubectl exec <pod-name> -- <command>
@@ -56,6 +61,7 @@ kubectl cp <pod-name>:/path/to/file ./local-file
 ```
 
 #### Resource Inspection
+
 ```bash
 # Check resource usage
 kubectl top nodes
@@ -71,6 +77,7 @@ kubectl api-resources
 ### Pod Status and Conditions
 
 #### Common Pod Statuses
+
 - **Pending**: Waiting to be scheduled
 - **Running**: Pod is running
 - **Succeeded**: All containers terminated successfully
@@ -78,11 +85,13 @@ kubectl api-resources
 - **Unknown**: Cannot determine pod state
 
 #### Common Container States
+
 - **Waiting**: Container is waiting to start
 - **Running**: Container is running
 - **Terminated**: Container has finished
 
 #### Common Error States
+
 - **ImagePullBackOff**: Cannot pull container image
 - **CrashLoopBackOff**: Container keeps crashing
 - **ErrImagePull**: Error pulling image
@@ -92,6 +101,7 @@ kubectl api-resources
 ### Debugging Workflows
 
 #### ImagePullBackOff
+
 ```bash
 # Check pod description
 kubectl describe pod <pod-name>
@@ -104,6 +114,7 @@ kubectl describe pod <pod-name>
 ```
 
 #### CrashLoopBackOff
+
 ```bash
 # Check logs
 kubectl logs <pod-name>
@@ -117,6 +128,7 @@ kubectl logs <pod-name> --previous
 ```
 
 #### Service Not Reachable
+
 ```bash
 # Check service
 kubectl get svc <service-name>
@@ -130,6 +142,7 @@ kubectl get pods --show-labels
 ```
 
 ### Network Troubleshooting
+
 ```bash
 # Test DNS resolution
 kubectl run -it --rm debug --image=busybox --restart=Never -- nslookup <service-name>
@@ -144,6 +157,7 @@ kubectl describe networkpolicy <policy-name>
 ```
 
 ### Resource Constraints
+
 ```bash
 # Check node resources
 kubectl describe nodes
@@ -159,18 +173,21 @@ kubectl get limitrange
 ### Debugging Tools
 
 #### Ephemeral Debug Containers
+
 ```bash
 # Add debug container to running pod (K8s 1.23+)
 kubectl debug <pod-name> -it --image=busybox
 ```
 
 #### Debug Node
+
 ```bash
 # Create debug pod on node
 kubectl debug node/<node-name> -it --image=ubuntu
 ```
 
 ## Example Debug Pod
+
 ```yaml
 apiVersion: v1
 kind: Pod
@@ -184,12 +201,14 @@ spec:
 ```
 
 ## Study Resources
+
 - [Troubleshoot Applications](https://kubernetes.io/docs/tasks/debug/debug-application/)
 - [Debug Pods](https://kubernetes.io/docs/tasks/debug/debug-application/debug-pods/)
 - [Debug Services](https://kubernetes.io/docs/tasks/debug/debug-application/debug-service/)
 - [Troubleshoot Clusters](https://kubernetes.io/docs/tasks/debug/debug-cluster/)
 
 ## Key Points to Remember
+
 - Always check logs first with `kubectl logs`
 - Use `kubectl describe` for detailed resource information
 - Check events for cluster-level issues
@@ -199,4 +218,5 @@ spec:
 - Test connectivity with ephemeral pods
 
 ## Hands-On Practice
+
 - [Lab 03: Troubleshooting](../../labs/02-container-orchestration/lab-03-troubleshooting.md) - Practical exercises covering debugging techniques, common issues, and systematic troubleshooting

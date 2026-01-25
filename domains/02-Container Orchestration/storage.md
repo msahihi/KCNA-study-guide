@@ -1,11 +1,13 @@
 # Storage
 
 ## Overview
+
 Persistent storage, volumes, and storage classes in Kubernetes.
 
 ## Key Topics
 
 ### Storage Concepts
+
 - Ephemeral vs Persistent storage
 - Volume lifecycle
 - Storage provisioning (static vs dynamic)
@@ -15,17 +17,20 @@ Persistent storage, volumes, and storage classes in Kubernetes.
 ### Volume Types
 
 #### Ephemeral Volumes
+
 - **emptyDir**: Temporary storage, lifecycle tied to pod
 - **configMap**: Mount configuration data
 - **secret**: Mount sensitive data
 - **downwardAPI**: Expose pod metadata
 
 #### Persistent Volumes
+
 - **PersistentVolume (PV)**: Cluster-level storage resource
 - **PersistentVolumeClaim (PVC)**: User request for storage
 - **StorageClass**: Dynamic provisioning template
 
 ### Volume Plugins
+
 - **hostPath**: Mount directory from node (dev/test only)
 - **nfs**: Network File System
 - **csi**: Container Storage Interface (modern approach)
@@ -33,23 +38,27 @@ Persistent storage, volumes, and storage classes in Kubernetes.
 - **cephfs**, **glusterfs**: Distributed storage systems
 
 ### Container Storage Interface (CSI)
+
 - Standard interface for storage systems
 - Plugin architecture
 - Vendor-agnostic storage integration
 - Dynamic provisioning support
 
 ### Access Modes
+
 - **ReadWriteOnce (RWO)**: Single node read-write
 - **ReadOnlyMany (ROX)**: Multiple nodes read-only
 - **ReadWriteMany (RWX)**: Multiple nodes read-write
 - **ReadWriteOncePod (RWOP)**: Single pod read-write (1.22+)
 
 ### Reclaim Policies
+
 - **Retain**: Manual reclamation required
 - **Delete**: Automatically delete storage
 - **Recycle**: Basic scrub (deprecated)
 
 ### Storage Classes
+
 - Define types of storage available
 - Enable dynamic provisioning
 - Configure parameters (IOPS, type, etc.)
@@ -58,6 +67,7 @@ Persistent storage, volumes, and storage classes in Kubernetes.
 ## Examples
 
 ### EmptyDir Volume
+
 ```yaml
 apiVersion: v1
 kind: Pod
@@ -76,6 +86,7 @@ spec:
 ```
 
 ### PersistentVolume and PersistentVolumeClaim
+
 ```yaml
 apiVersion: v1
 kind: PersistentVolume
@@ -105,6 +116,7 @@ spec:
 ```
 
 ### Using PVC in Pod
+
 ```yaml
 apiVersion: v1
 kind: Pod
@@ -124,6 +136,7 @@ spec:
 ```
 
 ### StorageClass
+
 ```yaml
 apiVersion: storage.k8s.io/v1
 kind: StorageClass
@@ -140,6 +153,7 @@ volumeBindingMode: WaitForFirstConsumer
 ```
 
 ### Dynamic Provisioning
+
 ```yaml
 apiVersion: v1
 kind: PersistentVolumeClaim
@@ -155,6 +169,7 @@ spec:
 ```
 
 ### ConfigMap as Volume
+
 ```yaml
 apiVersion: v1
 kind: ConfigMap
@@ -183,6 +198,7 @@ spec:
 ```
 
 ## Storage Best Practices
+
 - Use PVCs instead of directly mounting PVs
 - Choose appropriate access modes
 - Set resource requests/limits
@@ -192,6 +208,7 @@ spec:
 - Use CSI drivers when available
 
 ## Common kubectl Commands
+
 ```bash
 # List storage resources
 kubectl get pv
@@ -210,12 +227,14 @@ kubectl delete pvc <pvc-name>
 ```
 
 ## Study Resources
+
 - [Volumes](https://kubernetes.io/docs/concepts/storage/volumes/)
 - [Persistent Volumes](https://kubernetes.io/docs/concepts/storage/persistent-volumes/)
 - [Storage Classes](https://kubernetes.io/docs/concepts/storage/storage-classes/)
 - [CSI Specification](https://github.com/container-storage-interface/spec)
 
 ## Key Points to Remember
+
 - PVs are cluster resources, PVCs are namespace-scoped
 - StorageClasses enable dynamic provisioning
 - Access modes depend on storage backend capabilities
@@ -225,4 +244,5 @@ kubectl delete pvc <pvc-name>
 - Choose access modes based on application requirements
 
 ## Hands-On Practice
+
 - [Lab 04: Storage](../../labs/02-container-orchestration/lab-04-storage.md) - Practical exercises covering Volumes, PV/PVC, StorageClasses, and StatefulSets

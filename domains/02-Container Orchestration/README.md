@@ -5,15 +5,19 @@ This domain covers essential aspects of managing containerized applications at s
 ## Topics
 
 ### [Networking](networking.md)
+
 Container networking, service discovery, and network policies in Kubernetes.
 
 ### [Security](security.md)
+
 Security best practices, policies, and mechanisms for containerized environments.
 
 ### [Troubleshooting](troubleshooting.md)
+
 Debugging techniques and tools for diagnosing issues in Kubernetes clusters.
 
 ### [Storage](storage.md)
+
 Persistent storage, volumes, and storage classes in Kubernetes.
 
 ## Related Labs

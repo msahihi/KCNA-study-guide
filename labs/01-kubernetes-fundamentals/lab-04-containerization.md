@@ -1,7 +1,9 @@
 # Lab 04: Containerization
 
 ## Objectives
+
 By the end of this lab, you will be able to:
+
 - Understand container fundamentals and how they differ from virtual machines
 - Work with different container runtimes (containerd, CRI-O)
 - Build container images using best practices
@@ -9,12 +11,14 @@ By the end of this lab, you will be able to:
 - Apply security best practices for container images
 
 ## Prerequisites
+
 - Access to a Kubernetes cluster (minikube, kind, or cloud provider)
 - Docker or Podman installed locally
 - kubectl configured to communicate with your cluster
 - Basic understanding of Linux and command-line operations
 
 ## Estimated Time
+
 90 minutes
 
 ---
@@ -36,6 +40,7 @@ kubectl describe node <node-name> | grep "Container Runtime"
 ```
 
 **Expected output:**
+
 ```
 Container Runtime Version:  containerd://1.6.24
 ```
@@ -61,6 +66,7 @@ sudo crictl logs <container-id>
 ```
 
 **Questions:**
+
 1. What is the difference between Docker and containerd?
 2. Why did Kubernetes deprecate Docker as a container runtime?
 3. What is the Container Runtime Interface (CRI)?
@@ -208,6 +214,7 @@ docker images my-app
 ```
 
 **Questions:**
+
 1. Why use multi-stage builds?
 2. What are the security implications of running containers as root?
 3. How does `.dockerignore` help with image optimization?
@@ -422,6 +429,7 @@ kubectl logs ambassador-example -c app -f
 ```
 
 **Questions:**
+
 1. When would you use a sidecar pattern instead of adding functionality to the main container?
 2. What are the resource implications of multi-container pods?
 3. How do containers in the same pod communicate?
@@ -723,12 +731,14 @@ Create a production-ready multi-container pod that implements the following:
    - Use seccomp profile
 
 **Bonus challenges:**
+
 - Build the image using best practices (multi-stage, minimal layers)
 - Scan the image for vulnerabilities
 - Implement a custom health check script
 - Add resource quotas and limit ranges
 
 **Deliverables:**
+
 - Dockerfile with all best practices applied
 - Pod YAML with all three container types
 - Documentation of security decisions

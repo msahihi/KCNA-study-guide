@@ -1,11 +1,13 @@
 # Containerization
 
 ## Overview
+
 Container fundamentals, runtimes, and how containers work within Kubernetes.
 
 ## Key Topics
 
 ### Container Basics
+
 - What are containers?
 - Containers vs Virtual Machines
 - Container images and registries
@@ -13,6 +15,7 @@ Container fundamentals, runtimes, and how containers work within Kubernetes.
 - Container lifecycle
 
 ### Container Runtimes
+
 - **Container Runtime Interface (CRI)**
 - **containerd**: Industry-standard container runtime
 - **CRI-O**: Lightweight container runtime for Kubernetes
@@ -20,6 +23,7 @@ Container fundamentals, runtimes, and how containers work within Kubernetes.
 - Runtime comparison and use cases
 
 ### Container Images
+
 - Image registries (Docker Hub, Harbor, etc.)
 - Image naming and tagging
 - Building container images
@@ -28,6 +32,7 @@ Container fundamentals, runtimes, and how containers work within Kubernetes.
 - Image security scanning
 
 ### Container Configuration in Kubernetes
+
 - Image pull policies
 - Container commands and arguments
 - Environment variables
@@ -36,6 +41,7 @@ Container fundamentals, runtimes, and how containers work within Kubernetes.
 - Security context
 
 ### Container Best Practices
+
 - Use specific image tags (avoid :latest)
 - Minimize image size
 - Run as non-root user
@@ -46,6 +52,7 @@ Container fundamentals, runtimes, and how containers work within Kubernetes.
 ## Examples
 
 ### Basic Container in Pod
+
 ```yaml
 apiVersion: v1
 kind: Pod
@@ -71,6 +78,7 @@ spec:
 ```
 
 ### Multi-Container Pod
+
 ```yaml
 apiVersion: v1
 kind: Pod
@@ -85,12 +93,14 @@ spec:
 ```
 
 ## Study Resources
+
 - [Container Runtimes](https://kubernetes.io/docs/setup/production-environment/container-runtimes/)
 - [Images](https://kubernetes.io/docs/concepts/containers/images/)
 - [Container Environment](https://kubernetes.io/docs/concepts/containers/container-environment/)
 - [Docker Documentation](https://docs.docker.com/)
 
 ## Key Points to Remember
+
 - Containers package applications with their dependencies
 - Kubernetes uses CRI-compatible runtimes (containerd, CRI-O)
 - Images should be small, secure, and versioned
@@ -98,4 +108,5 @@ spec:
 - Multi-container pods share network and storage
 
 ## Hands-On Practice
+
 - [Lab 04: Containerization](../../labs/01-kubernetes-fundamentals/lab-04-containerization.md) - Practical exercises covering container runtimes, image building, multi-container patterns, and init containers

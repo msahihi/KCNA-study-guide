@@ -5,12 +5,15 @@ This domain covers cloud-native principles, observability, and the broader ecosy
 ## Topics
 
 ### [Observability](observability.md)
+
 Monitoring, logging, and tracing practices for cloud-native applications.
 
 ### [Cloud Native Ecosystem and Principles](cloud_native_ecosystem_and_principles.md)
+
 Understanding the CNCF landscape, cloud-native principles, and key technologies.
 
 ### [Cloud Native Community and Collaboration](cloud_native_community_and_collaboration.md)
+
 Open source communities, contribution practices, and collaboration in the cloud-native space.
 
 ## Related Labs

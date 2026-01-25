@@ -1,6 +1,7 @@
 # Application Delivery
 
 ## Overview
+
 Modern deployment strategies, CI/CD practices, and GitOps principles for cloud-native applications.
 
 ## Key Topics
@@ -8,24 +9,28 @@ Modern deployment strategies, CI/CD practices, and GitOps principles for cloud-n
 ### Deployment Strategies
 
 #### Rolling Update
+
 - Default Kubernetes deployment strategy
 - Gradually replace old pods with new ones
 - Zero downtime deployments
 - Configurable via maxSurge and maxUnavailable
 
 #### Blue-Green Deployment
+
 - Run two identical environments (blue and green)
 - Switch traffic from blue to green atomically
 - Easy rollback by switching back
 - Requires double infrastructure
 
 #### Canary Deployment
+
 - Gradually roll out changes to subset of users
 - Monitor metrics before full rollout
 - Reduce risk of bad deployments
 - Progressive delivery approach
 
 #### Recreate
+
 - Terminate all old pods before creating new ones
 - Causes downtime
 - Useful when running different versions simultaneously isn't possible
@@ -33,12 +38,14 @@ Modern deployment strategies, CI/CD practices, and GitOps principles for cloud-n
 ### Continuous Integration / Continuous Deployment (CI/CD)
 
 #### CI/CD Concepts
+
 - Continuous Integration: Automatically build and test code changes
 - Continuous Delivery: Automatically deploy to staging
 - Continuous Deployment: Automatically deploy to production
 - Pipeline automation
 
 #### Popular CI/CD Tools
+
 - **Jenkins**: Open-source automation server
 - **GitLab CI/CD**: Integrated with GitLab
 - **GitHub Actions**: GitHub's CI/CD solution
@@ -49,12 +56,14 @@ Modern deployment strategies, CI/CD practices, and GitOps principles for cloud-n
 ### GitOps
 
 #### GitOps Principles
+
 1. Declarative configuration stored in Git
 2. Git as single source of truth
 3. Automated deployment from Git
 4. Continuous reconciliation of desired and actual state
 
 #### GitOps Benefits
+
 - Version control for infrastructure
 - Audit trail and rollback capability
 - Declarative and reproducible deployments
@@ -62,6 +71,7 @@ Modern deployment strategies, CI/CD practices, and GitOps principles for cloud-n
 - Improved collaboration
 
 #### GitOps Tools
+
 - **Flux**: Kubernetes operator for GitOps
 - **Argo CD**: Declarative GitOps CD for Kubernetes
 - **Jenkins X**: CI/CD solution for Kubernetes with GitOps
@@ -69,6 +79,7 @@ Modern deployment strategies, CI/CD practices, and GitOps principles for cloud-n
 ### Application Packaging
 
 #### Helm
+
 - Package manager for Kubernetes
 - Helm Charts: Reusable Kubernetes configurations
 - Templating and parameterization
@@ -76,6 +87,7 @@ Modern deployment strategies, CI/CD practices, and GitOps principles for cloud-n
 - Repository system for sharing charts
 
 #### Kustomize
+
 - Native Kubernetes configuration management
 - Overlay-based customization
 - No templating, uses patches
@@ -84,12 +96,14 @@ Modern deployment strategies, CI/CD practices, and GitOps principles for cloud-n
 ### Progressive Delivery
 
 #### Feature Flags
+
 - Toggle features on/off without deployment
 - A/B testing
 - Gradual feature rollout
 - Quick rollback capability
 
 #### Traffic Management
+
 - Service meshes (Istio, Linkerd)
 - Weighted routing
 - Header-based routing
@@ -98,6 +112,7 @@ Modern deployment strategies, CI/CD practices, and GitOps principles for cloud-n
 ## Examples
 
 ### Rolling Update Deployment
+
 ```yaml
 apiVersion: apps/v1
 kind: Deployment
@@ -126,6 +141,7 @@ spec:
 ```
 
 ### Blue-Green with Services
+
 ```yaml
 # Blue deployment
 apiVersion: apps/v1
@@ -184,6 +200,7 @@ spec:
 ```
 
 ### Basic Helm Chart Structure
+
 ```
 mychart/
 ├── Chart.yaml          # Chart metadata
@@ -196,6 +213,7 @@ mychart/
 ```
 
 ### Kustomize Structure
+
 ```
 base/
 ├── kustomization.yaml
@@ -241,6 +259,7 @@ kubectl set image deployment/myapp myapp=myapp:v2
 ```
 
 ## Study Resources
+
 - [Deployments](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/)
 - [GitOps Principles](https://opengitops.dev/)
 - [Helm Documentation](https://helm.sh/docs/)
@@ -249,6 +268,7 @@ kubectl set image deployment/myapp myapp=myapp:v2
 - [Flux](https://fluxcd.io/)
 
 ## Key Points to Remember
+
 - Rolling updates are the default Kubernetes deployment strategy
 - GitOps uses Git as the single source of truth
 - Canary deployments reduce risk by gradual rollout
@@ -258,4 +278,5 @@ kubectl set image deployment/myapp myapp=myapp:v2
 - Always have a rollback strategy
 
 ## Hands-On Practice
+
 - [Lab 01: Application Delivery](../../labs/03-cloud-native-application-delivery/lab-01-application-delivery.md) - Practical exercises covering deployment strategies, Helm, Kustomize, and GitOps

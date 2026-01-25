@@ -1,7 +1,9 @@
 # Lab 01: Kubernetes Networking
 
 ## Objectives
+
 By the end of this lab, you will be able to:
+
 - Understand Kubernetes networking fundamentals and the CNI
 - Work with different Service types (ClusterIP, NodePort, LoadBalancer)
 - Configure and use Ingress controllers
@@ -9,12 +11,14 @@ By the end of this lab, you will be able to:
 - Troubleshoot DNS resolution in Kubernetes
 
 ## Prerequisites
+
 - Running Kubernetes cluster (minikube, kind, or cloud provider)
 - kubectl configured and working
 - Basic understanding of networking concepts
 - For Ingress: NGINX Ingress Controller installed
 
 ## Estimated Time
+
 120 minutes
 
 ---
@@ -37,6 +41,7 @@ minikube ssh "cat /etc/cni/net.d/*.conf"
 ```
 
 **Common CNI plugins:**
+
 - Calico
 - Flannel
 - Weave Net
@@ -57,6 +62,7 @@ minikube ssh "sudo ip netns list"
 ```
 
 **Questions:**
+
 1. What is the CNI's primary responsibility?
 2. How does the CNI differ between different Kubernetes networking solutions?
 3. What is the pod network CIDR in your cluster?
@@ -272,6 +278,7 @@ kubectl run -it --rm debug --image=tutum/dnsutils --restart=Never -- dig nginx-h
 ```
 
 **Questions:**
+
 1. When would you use ClusterIP vs. NodePort vs. LoadBalancer?
 2. What are the port ranges for NodePort services?
 3. How does a headless service differ from a regular service?
@@ -768,6 +775,7 @@ kubectl exec -n external external-pod -- curl -s http://backend.netpol-test
 ```
 
 **Questions:**
+
 1. What happens if no Network Policy is applied to a pod?
 2. Can you have both allow and deny rules in the same policy?
 3. How do Network Policies work with Services?
@@ -946,6 +954,7 @@ Create a complete microservices architecture with:
    - Resource limits on all pods
 
 **Deliverables:**
+
 - All YAML manifests
 - Test script showing connectivity
 - Documentation of security model

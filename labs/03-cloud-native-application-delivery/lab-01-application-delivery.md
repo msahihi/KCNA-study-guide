@@ -1,7 +1,9 @@
 # Lab 01: Cloud Native Application Delivery
 
 ## Objectives
+
 By the end of this lab, you will be able to:
+
 - Implement various deployment strategies (Rolling Update, Blue-Green, Canary)
 - Use Helm for package management
 - Understand GitOps principles and practices
@@ -9,6 +11,7 @@ By the end of this lab, you will be able to:
 - Implement CI/CD best practices for Kubernetes
 
 ## Prerequisites
+
 - Running Kubernetes cluster
 - kubectl configured and working
 - Helm 3 installed
@@ -16,6 +19,7 @@ By the end of this lab, you will be able to:
 - Basic understanding of deployments
 
 ## Estimated Time
+
 120 minutes
 
 ---
@@ -361,6 +365,7 @@ kubectl scale deployment app-canary --replicas=0
 ```
 
 **Questions:**
+
 1. What are the advantages of blue-green vs rolling update?
 2. When would you use canary deployment?
 3. How do you automate canary analysis?
@@ -466,7 +471,7 @@ helm create myapp
 tree myapp/
 ```
 
-**Customize chart values (myapp/values.yaml):**
+**Customize chart values (myapp/values.YAML):**
 
 ```yaml
 replicaCount: 2
@@ -495,7 +500,7 @@ autoscaling:
   enabled: false
 ```
 
-**Edit deployment template (myapp/templates/deployment.yaml):**
+**Edit deployment template (myapp/templates/deployment.YAML):**
 
 ```yaml
 apiVersion: apps/v1
@@ -593,7 +598,8 @@ helm list --uninstalled
 ```
 
 **Questions:**
-1. What is the difference between helm install and helm upgrade --install?
+
+1. What is the difference between Helm install and Helm upgrade --install?
 2. How does Helm track release history?
 3. What are Helm hooks and when would you use them?
 
@@ -604,6 +610,7 @@ helm list --uninstalled
 ### Exercise 3.1: Understanding GitOps
 
 **GitOps Core Principles:**
+
 1. Declarative configuration stored in Git
 2. Git as single source of truth
 3. Automated deployment from Git
@@ -866,6 +873,7 @@ EOF
 ```
 
 **Questions:**
+
 1. What are the benefits of GitOps over traditional deployment methods?
 2. How do you handle secrets in GitOps?
 3. What happens if manual changes are made to the cluster in GitOps?
@@ -1039,6 +1047,7 @@ Create a complete CI/CD pipeline with:
    - Automated rollback on failures
 
 **Deliverables:**
+
 - Git repository with all manifests
 - Helm chart
 - Deployment scripts

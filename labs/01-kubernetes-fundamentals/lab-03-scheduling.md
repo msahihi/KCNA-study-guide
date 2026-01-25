@@ -1,6 +1,7 @@
 # Lab 03: Kubernetes Scheduling
 
 ## Objectives
+
 - Understand how the Kubernetes scheduler works
 - Use nodeSelector for simple node selection
 - Implement node affinity and anti-affinity
@@ -8,12 +9,14 @@
 - Understand pod priority and preemption
 
 ## Prerequisites
+
 - Kubernetes cluster with multiple nodes (or minikube with multiple nodes)
 - kubectl configured
 
 ## Exercise 1: Node Labels and nodeSelector
 
 ### Task 1.1: Label Nodes
+
 ```bash
 # View current nodes and their labels
 kubectl get nodes --show-labels
@@ -32,7 +35,9 @@ kubectl label nodes <node-name> disktype-
 ```
 
 ### Task 1.2: Use nodeSelector
+
 Create `pod-nodeselector.yaml`:
+
 ```yaml
 apiVersion: v1
 kind: Pod
@@ -62,7 +67,9 @@ kubectl describe pod test-pod | grep -A 5 Events
 ## Exercise 2: Node Affinity
 
 ### Task 2.1: Required Node Affinity
+
 Create `pod-node-affinity-required.yaml`:
+
 ```yaml
 apiVersion: v1
 kind: Pod
@@ -93,7 +100,9 @@ kubectl get pod nginx-node-affinity -o wide
 ```
 
 ### Task 2.2: Preferred Node Affinity
+
 Create `pod-node-affinity-preferred.yaml`:
+
 ```yaml
 apiVersion: v1
 kind: Pod
@@ -133,7 +142,9 @@ kubectl get pod nginx-preferred -o wide
 ## Exercise 3: Pod Affinity and Anti-Affinity
 
 ### Task 3.1: Pod Affinity
+
 Create `web-deployment.yaml`:
+
 ```yaml
 apiVersion: apps/v1
 kind: Deployment
@@ -156,6 +167,7 @@ spec:
 ```
 
 Create `cache-with-affinity.yaml`:
+
 ```yaml
 apiVersion: apps/v1
 kind: Deployment
@@ -199,7 +211,9 @@ kubectl get pods -o wide -l app=cache
 ```
 
 ### Task 3.2: Pod Anti-Affinity
+
 Create `web-anti-affinity.yaml`:
+
 ```yaml
 apiVersion: apps/v1
 kind: Deployment
@@ -241,6 +255,7 @@ kubectl get pods -l app=web-ha -o wide
 ## Exercise 4: Taints and Tolerations
 
 ### Task 4.1: Add Taints to Nodes
+
 ```bash
 # Add a taint to a node
 kubectl taint nodes <node-name> key=value:NoSchedule
@@ -256,7 +271,9 @@ kubectl taint nodes <node-name> key=value:NoSchedule-
 ```
 
 ### Task 4.2: Create Pods with Tolerations
+
 Create `pod-with-toleration.yaml`:
+
 ```yaml
 apiVersion: v1
 kind: Pod
@@ -282,7 +299,9 @@ kubectl get pod nginx-toleration -o wide
 ```
 
 ### Task 4.3: Tolerate All Taints
+
 Create `pod-tolerate-all.yaml`:
+
 ```yaml
 apiVersion: v1
 kind: Pod
@@ -304,7 +323,9 @@ kubectl apply -f pod-tolerate-all.yaml
 ## Exercise 5: DaemonSet
 
 ### Task 5.1: Create a DaemonSet
+
 Create `logging-daemonset.yaml`:
+
 ```yaml
 apiVersion: apps/v1
 kind: DaemonSet
@@ -348,7 +369,9 @@ kubectl describe daemonset logging-agent
 ## Exercise 6: Resource-Based Scheduling
 
 ### Task 6.1: Create Pods with Resource Requests
+
 Create `high-resource-pod.yaml`:
+
 ```yaml
 apiVersion: v1
 kind: Pod
@@ -382,7 +405,9 @@ kubectl top pods
 ## Exercise 7: Manual Scheduling
 
 ### Task 7.1: Manually Schedule a Pod
+
 Create `manually-scheduled-pod.yaml`:
+
 ```yaml
 apiVersion: v1
 kind: Pod
@@ -406,7 +431,9 @@ kubectl get pod manual-schedule -o wide
 ## Exercise 8: Pod Priority and Preemption
 
 ### Task 8.1: Create Priority Classes
+
 Create `priority-classes.yaml`:
+
 ```yaml
 apiVersion: scheduling.k8s.io/v1
 kind: PriorityClass
@@ -434,7 +461,9 @@ kubectl get priorityclasses
 ```
 
 ### Task 8.2: Use Priority Classes
+
 Create `high-priority-pod.yaml`:
+
 ```yaml
 apiVersion: v1
 kind: Pod
@@ -460,6 +489,7 @@ kubectl get pod high-pri-pod -o yaml | grep priority
 ```
 
 ## Cleanup
+
 ```bash
 # Delete all resources
 kubectl delete pod nginx-ssd nginx-node-affinity nginx-preferred nginx-toleration tolerate-all manual-schedule high-pri-pod test-pod
@@ -478,6 +508,7 @@ kubectl taint nodes <node-name> dedicated:NoExecute-
 ## Challenge Exercise
 
 Create a complex scheduling scenario:
+
 1. Label three nodes with different zones (zone=us-east-1a, us-east-1b, us-east-1c)
 2. Create a deployment with 6 replicas that:
    - Uses pod anti-affinity to spread across zones
@@ -498,6 +529,7 @@ Create a complex scheduling scenario:
 - [ ] Configured pod priorities
 
 ## Additional Resources
+
 - [Assigning Pods to Nodes](https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/)
 - [Taints and Tolerations](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/)
 - [Pod Priority and Preemption](https://kubernetes.io/docs/concepts/scheduling-eviction/pod-priority-preemption/)

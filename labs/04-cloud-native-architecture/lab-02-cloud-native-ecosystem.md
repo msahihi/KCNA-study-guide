@@ -1,7 +1,9 @@
 # Lab 02: Cloud Native Ecosystem
 
 ## Objectives
+
 By the end of this lab, you will be able to:
+
 - Understand the CNCF landscape and project maturity levels
 - Explore key CNCF projects and their purposes
 - Apply cloud-native principles in practice
@@ -10,12 +12,14 @@ By the end of this lab, you will be able to:
 - Evaluate and choose appropriate cloud-native tools
 
 ## Prerequisites
+
 - Running Kubernetes cluster
 - kubectl configured and working
 - Basic understanding of cloud-native concepts
 - Internet access for exploring CNCF landscape
 
 ## Estimated Time
+
 90 minutes
 
 ---
@@ -25,17 +29,20 @@ By the end of this lab, you will be able to:
 ### Exercise 1.1: CNCF Overview
 
 **Cloud Native Computing Foundation (CNCF):**
+
 - Part of the Linux Foundation
 - Hosts cloud-native open source projects
 - Provides vendor-neutral governance
 - Fosters collaboration and innovation
 
 **CNCF Project Maturity Levels:**
+
 1. **Sandbox**: Early stage projects
 2. **Incubating**: Growing adoption, used in production
 3. **Graduated**: Mature, production-ready, widely adopted
 
 **Visit CNCF Landscape:**
+
 ```bash
 # Open browser
 # https://landscape.cncf.io/
@@ -52,6 +59,7 @@ By the end of this lab, you will be able to:
 ### Exercise 1.2: Key CNCF Projects
 
 **Graduated Projects (Examples):**
+
 - **Kubernetes**: Container orchestration
 - **Prometheus**: Monitoring and alerting
 - **Envoy**: Service proxy
@@ -75,6 +83,7 @@ cat landscape.yml | grep -A 5 "name: Kubernetes"
 ```
 
 **Questions:**
+
 1. What criteria must a project meet to graduate?
 2. Why is vendor-neutral governance important?
 3. How does CNCF differ from other foundations?
@@ -89,6 +98,7 @@ cat landscape.yml | grep -A 5 "name: Kubernetes"
 "Cloud native technologies empower organizations to build and run scalable applications in modern, dynamic environments such as public, private, and hybrid clouds. Containers, service meshes, microservices, immutable infrastructure, and declarative APIs exemplify this approach."
 
 **Key Characteristics:**
+
 1. **Containerized**: Packaged in containers
 2. **Dynamically Orchestrated**: Actively scheduled and managed
 3. **Microservices-Oriented**: Loosely coupled services
@@ -274,6 +284,7 @@ kubectl describe deployment cloud-native-app
 ```
 
 **Questions:**
+
 1. What makes an application "cloud native"?
 2. How does cloud native differ from "running in the cloud"?
 3. What are the benefits of cloud-native architecture?
@@ -285,6 +296,7 @@ kubectl describe deployment cloud-native-app
 ### Exercise 3.1: Understanding 12-Factor Methodology
 
 **The Twelve Factors:**
+
 1. **Codebase**: One codebase tracked in version control
 2. **Dependencies**: Explicitly declare and isolate dependencies
 3. **Config**: Store config in the environment
@@ -550,6 +562,7 @@ kubectl logs log-stream-app -f
 ```
 
 **Questions:**
+
 1. Why is storing config in environment variables better than files?
 2. How does statelessness enable horizontal scaling?
 3. What does "disposability" mean for applications?
@@ -561,6 +574,7 @@ kubectl logs log-stream-app -f
 ### Exercise 4.1: Sidecar Pattern (Already covered but recap)
 
 **Use cases:**
+
 - Log aggregation
 - Monitoring agents
 - Service mesh proxies (Envoy)
@@ -714,12 +728,14 @@ kubectl logs circuit-breaker-demo -f
 ### Exercise 4.4: Service Mesh Concepts
 
 **Service Mesh benefits:**
+
 - Traffic management
 - Security (mTLS)
 - Observability
 - Resilience (retries, circuit breakers)
 
 **Popular service meshes:**
+
 - Istio
 - Linkerd
 - Consul Connect
@@ -777,6 +793,7 @@ spec:
 ```
 
 **Questions:**
+
 1. When should you use the ambassador pattern?
 2. What problem does the circuit breaker pattern solve?
 3. What are the trade-offs of using a service mesh?
@@ -788,6 +805,7 @@ spec:
 ### Exercise 5.1: Container Runtime Projects
 
 **containerd:**
+
 ```bash
 # View containerd info (on node)
 kubectl get nodes -o jsonpath='{.items[*].status.nodeInfo.containerRuntimeVersion}'
@@ -797,6 +815,7 @@ kubectl get nodes -o jsonpath='{.items[*].status.nodeInfo.containerRuntimeVersio
 ```
 
 **CRI-O:**
+
 ```bash
 # Alternative container runtime focused on Kubernetes
 # Lightweight, optimized for Kubernetes CRI
@@ -909,6 +928,7 @@ spec:
 ```
 
 **Questions:**
+
 1. What CNCF projects would you use for a production cluster?
 2. How do you evaluate a CNCF project for adoption?
 3. What's the difference between graduated and incubating projects?
@@ -920,6 +940,7 @@ spec:
 ### Exercise 6.1: Cloud Native Application Checklist
 
 **Checklist:**
+
 - [ ] Containerized
 - [ ] Orchestrated (Kubernetes)
 - [ ] Microservices architecture
@@ -1055,6 +1076,7 @@ Design and document a complete cloud-native application:
    - CI/CD pipeline design
 
 **Deliverables:**
+
 - Architecture diagram
 - Technology decisions document
 - Kubernetes manifests

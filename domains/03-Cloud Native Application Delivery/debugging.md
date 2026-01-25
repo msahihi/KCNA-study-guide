@@ -1,6 +1,7 @@
 # Debugging
 
 ## Overview
+
 Techniques and tools for debugging cloud-native applications in production environments.
 
 ## Key Topics
@@ -8,6 +9,7 @@ Techniques and tools for debugging cloud-native applications in production envir
 ### Application-Level Debugging
 
 #### Log Analysis
+
 - Structured logging (JSON format)
 - Log aggregation and centralization
 - Log levels (DEBUG, INFO, WARN, ERROR)
@@ -15,12 +17,14 @@ Techniques and tools for debugging cloud-native applications in production envir
 - Context-aware logging
 
 #### Application Metrics
+
 - Custom application metrics
 - Business metrics
 - Performance metrics
 - Error rates and latency
 
 #### Health Checks
+
 - Liveness probes: Is the container alive?
 - Readiness probes: Is the container ready to serve traffic?
 - Startup probes: Has the application started?
@@ -28,6 +32,7 @@ Techniques and tools for debugging cloud-native applications in production envir
 ### Debugging Tools and Techniques
 
 #### kubectl Debug Commands
+
 ```bash
 # View logs
 kubectl logs <pod-name>
@@ -51,6 +56,7 @@ kubectl get events
 ```
 
 #### Ephemeral Debug Containers
+
 ```bash
 # Add debug container to running pod (K8s 1.23+)
 kubectl debug <pod-name> -it --image=busybox --target=<container-name>
@@ -62,12 +68,14 @@ kubectl debug <pod-name> -it --image=ubuntu --share-processes --copy-to=debug-po
 ### Distributed Tracing
 
 #### Tracing Concepts
+
 - Spans: Individual operations in a trace
 - Traces: End-to-end request path
 - Context propagation across services
 - Sampling strategies
 
 #### Tracing Tools
+
 - **Jaeger**: Distributed tracing platform
 - **Zipkin**: Distributed tracing system
 - **OpenTelemetry**: Vendor-neutral observability framework
@@ -76,12 +84,14 @@ kubectl debug <pod-name> -it --image=ubuntu --share-processes --copy-to=debug-po
 ### Logging Solutions
 
 #### Log Aggregation Platforms
+
 - **ELK Stack**: Elasticsearch, Logstash, Kibana
 - **EFK Stack**: Elasticsearch, Fluentd, Kibana
 - **Loki**: Log aggregation system by Grafana Labs
 - **Splunk**: Enterprise logging and monitoring
 
 #### Best Practices
+
 - Use structured logging (JSON)
 - Include timestamps and context
 - Log at appropriate levels
@@ -91,12 +101,14 @@ kubectl debug <pod-name> -it --image=ubuntu --share-processes --copy-to=debug-po
 ### Profiling and Performance
 
 #### Application Profiling
+
 - CPU profiling
 - Memory profiling
 - Goroutine/thread profiling
 - Heap analysis
 
 #### Tools
+
 - pprof (Go)
 - Java Flight Recorder
 - Python profilers
@@ -105,6 +117,7 @@ kubectl debug <pod-name> -it --image=ubuntu --share-processes --copy-to=debug-po
 ### Common Debugging Scenarios
 
 #### Application Crashes
+
 1. Check logs: `kubectl logs <pod-name> --previous`
 2. Check events: `kubectl describe pod <pod-name>`
 3. Verify resource limits
@@ -112,6 +125,7 @@ kubectl debug <pod-name> -it --image=ubuntu --share-processes --copy-to=debug-po
 5. Review application error handling
 
 #### Slow Performance
+
 1. Check resource usage: `kubectl top pods`
 2. Review application metrics
 3. Analyze traces for bottlenecks
@@ -119,6 +133,7 @@ kubectl debug <pod-name> -it --image=ubuntu --share-processes --copy-to=debug-po
 5. Profile application code
 
 #### Intermittent Issues
+
 1. Enable detailed logging
 2. Add distributed tracing
 3. Monitor error patterns
@@ -126,6 +141,7 @@ kubectl debug <pod-name> -it --image=ubuntu --share-processes --copy-to=debug-po
 5. Review autoscaling behavior
 
 #### Memory Leaks
+
 1. Monitor memory usage over time
 2. Generate heap dumps
 3. Use memory profiling tools
@@ -135,6 +151,7 @@ kubectl debug <pod-name> -it --image=ubuntu --share-processes --copy-to=debug-po
 ## Examples
 
 ### Health Check Configuration
+
 ```yaml
 apiVersion: v1
 kind: Pod
@@ -171,6 +188,7 @@ spec:
 ```
 
 ### Structured Logging Example (JSON)
+
 ```json
 {
   "timestamp": "2026-01-25T10:30:45.123Z",
@@ -186,6 +204,7 @@ spec:
 ```
 
 ### Debug Pod with Tools
+
 ```yaml
 apiVersion: v1
 kind: Pod
@@ -200,6 +219,7 @@ spec:
 ```
 
 ### OpenTelemetry Configuration Example
+
 ```yaml
 apiVersion: v1
 kind: ConfigMap
@@ -260,12 +280,14 @@ data:
    - Error propagation
 
 ## Study Resources
+
 - [Debug Running Pods](https://kubernetes.io/docs/tasks/debug/debug-application/debug-running-pod/)
 - [Debug Services](https://kubernetes.io/docs/tasks/debug/debug-application/debug-service/)
 - [OpenTelemetry](https://opentelemetry.io/)
 - [Jaeger Documentation](https://www.jaegertracing.io/docs/)
 
 ## Key Points to Remember
+
 - Always check logs first when debugging
 - Use structured logging for better analysis
 - Implement proper health checks (liveness, readiness, startup)
@@ -276,4 +298,5 @@ data:
 - Keep debug tools in a separate container image
 
 ## Hands-On Practice
+
 - [Lab 02: Debugging](../../labs/03-cloud-native-application-delivery/lab-02-debugging.md) - Practical exercises covering health probes, logging, debugging techniques, and graceful shutdown

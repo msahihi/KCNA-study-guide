@@ -1,7 +1,9 @@
 # Lab 02: Kubernetes Security
 
 ## Objectives
+
 By the end of this lab, you will be able to:
+
 - Configure and apply security contexts at pod and container levels
 - Implement Pod Security Standards (Restricted, Baseline, Privileged)
 - Configure Role-Based Access Control (RBAC)
@@ -10,12 +12,14 @@ By the end of this lab, you will be able to:
 - Apply security best practices for Kubernetes workloads
 
 ## Prerequisites
+
 - Running Kubernetes cluster (v1.25+)
 - kubectl with admin access
 - Basic understanding of Linux permissions and capabilities
 - Completed networking lab for Network Policies
 
 ## Estimated Time
+
 120 minutes
 
 ---
@@ -71,6 +75,7 @@ kubectl exec security-context-demo -- ls -l /data/demo/testfile
 ```
 
 **Expected output:**
+
 ```
 uid=1000 gid=3000 groups=2000,4000
 ```
@@ -167,6 +172,7 @@ kubectl exec capabilities-demo -- capsh --print
 ```
 
 **Questions:**
+
 1. What is the difference between runAsUser and fsGroup?
 2. Why should you drop all capabilities by default?
 3. What does allowPrivilegeEscalation: false prevent?
@@ -178,6 +184,7 @@ kubectl exec capabilities-demo -- capsh --print
 ### Exercise 2.1: Understanding Pod Security Standards
 
 Pod Security Standards define three policies:
+
 - **Privileged**: Unrestricted policy
 - **Baseline**: Minimally restrictive, prevents known privilege escalations
 - **Restricted**: Heavily restricted, follows hardening best practices
@@ -308,6 +315,7 @@ kubectl apply -f restricted-compliant-pod.yaml
 ```
 
 **Questions:**
+
 1. What are the key differences between Baseline and Restricted policies?
 2. Can you override namespace-level Pod Security Standards?
 3. What happens in "warn" mode vs "enforce" mode?
@@ -551,6 +559,7 @@ kubectl --context=developer-context delete pod rbac-test-pod
 ```
 
 **Questions:**
+
 1. What is the difference between Role and ClusterRole?
 2. Can a RoleBinding reference a ClusterRole?
 3. How are RBAC rules evaluated when multiple apply?
@@ -694,7 +703,7 @@ spec:
 
 ### Exercise 4.4: Docker Registry Secrets
 
-**Create docker-registry secret:**
+**Create Docker-registry secret:**
 
 ```bash
 kubectl create secret docker-registry regcred \
@@ -721,6 +730,7 @@ spec:
 ```
 
 **Questions:**
+
 1. Are Secrets encrypted at rest by default?
 2. What is the maximum size of a Secret?
 3. How do Secret updates affect running pods?
@@ -1071,6 +1081,7 @@ Create a secure multi-tenant application with:
    - Cannot modify any resources
 
 **Deliverables:**
+
 - Namespace configurations with Pod Security Standards
 - RBAC manifests (Roles, RoleBindings, ClusterRoles)
 - Network Policy manifests

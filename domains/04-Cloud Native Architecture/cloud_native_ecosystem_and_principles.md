@@ -1,14 +1,17 @@
 # Cloud Native Ecosystem and Principles
 
 ## Overview
+
 Understanding the CNCF landscape, cloud-native principles, and key technologies.
 
 ## Cloud Native Definition
 
 ### CNCF Official Definition
+
 Cloud native technologies empower organizations to build and run scalable applications in modern, dynamic environments such as public, private, and hybrid clouds. Containers, service meshes, microservices, immutable infrastructure, and declarative APIs exemplify this approach.
 
 ### Key Characteristics
+
 - **Containerized**: Apps packaged in containers
 - **Dynamically Orchestrated**: Actively scheduled and managed
 - **Microservices Oriented**: Loosely coupled services
@@ -17,6 +20,7 @@ Cloud native technologies empower organizations to build and run scalable applic
 ## Cloud Native Principles
 
 ### The 12-Factor App
+
 1. **Codebase**: One codebase tracked in version control
 2. **Dependencies**: Explicitly declare dependencies
 3. **Config**: Store config in the environment
@@ -33,6 +37,7 @@ Cloud native technologies empower organizations to build and run scalable applic
 ### Cloud Native Architecture Patterns
 
 #### Microservices
+
 - Independently deployable services
 - Single responsibility principle
 - Technology diversity
@@ -40,12 +45,14 @@ Cloud native technologies empower organizations to build and run scalable applic
 - Decentralized data management
 
 #### Service Mesh
+
 - Dedicated infrastructure layer
 - Service-to-service communication
 - Traffic management, security, observability
 - Examples: Istio, Linkerd, Consul
 
 #### Serverless/FaaS
+
 - Function as a Service
 - Event-driven architecture
 - Auto-scaling to zero
@@ -53,6 +60,7 @@ Cloud native technologies empower organizations to build and run scalable applic
 - Examples: AWS Lambda, Knative, OpenFaaS
 
 #### API Gateway
+
 - Single entry point for clients
 - Request routing and composition
 - Authentication and authorization
@@ -63,85 +71,102 @@ Cloud native technologies empower organizations to build and run scalable applic
 ### CNCF Project Maturity Levels
 
 #### Graduated Projects
+
 - Proven production use at scale
 - Healthy contributor base
 - Examples: Kubernetes, Prometheus, Envoy, Helm
 
 #### Incubating Projects
+
 - Used in production by multiple organizations
 - Growing adoption and community
 - Examples: Argo, Flux, Linkerd
 
 #### Sandbox Projects
+
 - Early-stage projects
 - Experimentation and innovation
 
 ### Key CNCF Projects by Category
 
 #### Container Orchestration
+
 - **Kubernetes**: Container orchestration platform
 - **Helm**: Package manager for Kubernetes
 
 #### Container Runtime
+
 - **containerd**: Industry-standard container runtime
 - **CRI-O**: Lightweight container runtime
 
 #### Service Mesh
+
 - **Envoy**: Cloud-native proxy
 - **Linkerd**: Lightweight service mesh
 
 #### Observability and Analysis
+
 - **Prometheus**: Monitoring and alerting
 - **Grafana**: Visualization platform
 - **Jaeger**: Distributed tracing
 - **Fluentd**: Unified logging layer
 
 #### CI/CD and GitOps
+
 - **Flux**: GitOps for Kubernetes
 - **Argo**: Declarative GitOps CD
 - **Tekton**: Cloud-native CI/CD
 
 #### Service Discovery
+
 - **CoreDNS**: DNS and service discovery
 - **etcd**: Distributed key-value store
 
 #### Networking
+
 - **Calico**: Network security and policy
 - **Cilium**: eBPF-based networking
 - **Flannel**: Simple network fabric
 
 #### Security
+
 - **Falco**: Runtime security
 - **OPA (Open Policy Agent)**: Policy enforcement
 - **cert-manager**: Certificate management
 
 #### Storage
+
 - **Rook**: Storage orchestration
 - **Longhorn**: Distributed block storage
 
 ## Cloud Native Benefits
 
 ### Scalability
+
 - Horizontal scaling
 - Auto-scaling based on demand
 - Efficient resource utilization
 
 ### Resilience
+
 - Fault tolerance and self-healing
 - No single point of failure
 - Graceful degradation
 
 ### Portability
+
 - Run anywhere: cloud, on-prem, hybrid
 - Avoid vendor lock-in
 - Standard APIs and interfaces
 
 ### Velocity
+
 - Faster deployment cycles
 - Continuous delivery
 - Independent team scaling
 
 ### Observability
+
 - Built-in monitoring and logging
 - Distributed tracing
 - Real-time insights
@@ -149,14 +174,17 @@ Cloud native technologies empower organizations to build and run scalable applic
 ## Cloud Native Design Patterns
 
 ### Sidecar Pattern
+
 - Helper container alongside main container
 - Examples: log shipping, service mesh proxy
 
 ### Ambassador Pattern
+
 - Proxy for external services
 - Connection pooling, retry logic
 
 ### Adapter Pattern
+
 - Standardize and normalize output
 - Transform data formats
 
@@ -186,6 +214,7 @@ Cloud native technologies empower organizations to build and run scalable applic
 - **DigitalOcean**: DigitalOcean Kubernetes
 
 ### On-Premises Options
+
 - **OpenShift**: Red Hat's Kubernetes platform
 - **Rancher**: Complete container management platform
 - **Tanzu**: VMware's Kubernetes platform
@@ -193,12 +222,14 @@ Cloud native technologies empower organizations to build and run scalable applic
 ## Cloud Native Security
 
 ### Security Principles
+
 - Defense in depth
 - Least privilege
 - Zero trust architecture
 - Immutable infrastructure
 
 ### Security Areas
+
 - **Container Security**: Image scanning, runtime security
 - **Network Security**: Network policies, service mesh mTLS
 - **Access Control**: RBAC, admission controllers
@@ -208,11 +239,13 @@ Cloud native technologies empower organizations to build and run scalable applic
 ## Cloud Native Storage
 
 ### Storage Types
+
 - **Block Storage**: Persistent volumes
 - **File Storage**: Shared filesystems
 - **Object Storage**: S3-compatible storage
 
 ### Storage Concepts
+
 - Static vs Dynamic provisioning
 - Storage classes
 - Volume snapshots
@@ -221,6 +254,7 @@ Cloud native technologies empower organizations to build and run scalable applic
 ## Examples
 
 ### Microservices Architecture
+
 ```
 ┌─────────────────────────────────────────────┐
 │              API Gateway                     │
@@ -240,6 +274,7 @@ Cloud native technologies empower organizations to build and run scalable applic
 ```
 
 ### 12-Factor App Configuration
+
 ```yaml
 # Good: Externalized configuration
 apiVersion: v1
@@ -264,6 +299,7 @@ spec:
 ```
 
 ### Service Mesh Architecture
+
 ```
 ┌──────────────────────────────────────┐
 │        Control Plane                 │
@@ -285,6 +321,7 @@ spec:
 ```
 
 ## Study Resources
+
 - [CNCF Cloud Native Definition](https://github.com/cncf/toc/blob/main/DEFINITION.md)
 - [CNCF Landscape](https://landscape.cncf.io/)
 - [12-Factor App](https://12factor.net/)
@@ -292,6 +329,7 @@ spec:
 - [CNCF Project List](https://www.cncf.io/projects/)
 
 ## Key Points to Remember
+
 - Cloud native emphasizes scalability, resilience, and agility
 - The 12-Factor App provides principles for cloud-native applications
 - CNCF hosts numerous graduated and incubating projects
@@ -303,4 +341,5 @@ spec:
 - The CNCF landscape includes projects for all aspects of cloud-native
 
 ## Hands-On Practice
+
 - [Lab 02: Cloud Native Ecosystem and Principles](../../labs/04-cloud-native-architecture/lab-02-cloud-native-ecosystem.md) - Practical exercises covering CNCF landscape, 12-factor app, and cloud-native patterns

@@ -1,17 +1,20 @@
 # Security
 
 ## Overview
+
 Security best practices, policies, and mechanisms for containerized environments.
 
 ## Key Topics
 
 ### Security Principles
+
 - Defense in depth
 - Least privilege principle
 - Zero trust security model
 - Security by default
 
 ### Pod Security
+
 - **Security Context**: Define privilege and access control settings
 - **Pod Security Standards**: Privileged, Baseline, Restricted
 - **Pod Security Admission**: Enforce pod security standards
@@ -20,6 +23,7 @@ Security best practices, policies, and mechanisms for containerized environments
 - Dropping unnecessary capabilities
 
 ### Authentication and Authorization
+
 - **Authentication**: Verify user identity
   - X.509 certificates
   - Bearer tokens
@@ -30,18 +34,21 @@ Security best practices, policies, and mechanisms for containerized environments
   - Webhook mode
 
 ### RBAC (Role-Based Access Control)
+
 - Roles and ClusterRoles
 - RoleBindings and ClusterRoleBindings
 - Service accounts for pods
 - Principle of least privilege
 
 ### Network Security
+
 - Network policies for pod-to-pod traffic control
 - Ingress and egress rules
 - Service mesh security (mTLS)
 - Network segmentation
 
 ### Secrets Management
+
 - Kubernetes Secrets
 - Encryption at rest
 - External secret management (Vault, AWS Secrets Manager)
@@ -49,6 +56,7 @@ Security best practices, policies, and mechanisms for containerized environments
 - Avoiding hardcoded secrets
 
 ### Image Security
+
 - Image scanning for vulnerabilities
 - Image signing and verification
 - Private registries
@@ -56,6 +64,7 @@ Security best practices, policies, and mechanisms for containerized environments
 - Admission controllers for image validation
 
 ### Runtime Security
+
 - Container runtime security
 - AppArmor and SELinux profiles
 - Seccomp profiles
@@ -64,6 +73,7 @@ Security best practices, policies, and mechanisms for containerized environments
 ## Examples
 
 ### Security Context
+
 ```yaml
 apiVersion: v1
 kind: Pod
@@ -86,6 +96,7 @@ spec:
 ```
 
 ### RBAC Role and RoleBinding
+
 ```yaml
 apiVersion: rbac.authorization.k8s.io/v1
 kind: Role
@@ -113,6 +124,7 @@ roleRef:
 ```
 
 ### Using Secrets
+
 ```yaml
 apiVersion: v1
 kind: Secret
@@ -140,12 +152,14 @@ spec:
 ```
 
 ## Study Resources
+
 - [Kubernetes Security](https://kubernetes.io/docs/concepts/security/)
 - [Pod Security Standards](https://kubernetes.io/docs/concepts/security/pod-security-standards/)
 - [RBAC Authorization](https://kubernetes.io/docs/reference/access-authn-authz/rbac/)
 - [Secrets](https://kubernetes.io/docs/concepts/configuration/secret/)
 
 ## Key Points to Remember
+
 - Always run containers as non-root when possible
 - Use RBAC to control access to cluster resources
 - Store sensitive data in Secrets, not ConfigMaps
@@ -155,4 +169,5 @@ spec:
 - Enable Pod Security Admission
 
 ## Hands-On Practice
+
 - [Lab 02: Security](../../labs/02-container-orchestration/lab-02-security.md) - Practical exercises covering security contexts, Pod Security Standards, RBAC, and Network Policies

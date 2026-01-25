@@ -5,15 +5,19 @@ This domain covers the core concepts and fundamental operations of Kubernetes, r
 ## Topics
 
 ### [Kubernetes Core Concepts](kubernetes_core_concepts.md)
+
 Understanding the fundamental building blocks and architecture of Kubernetes.
 
 ### [Administration](administration.md)
+
 Day-to-day management and operational tasks for Kubernetes clusters.
 
 ### [Scheduling](scheduling.md)
+
 How Kubernetes schedules pods onto nodes and related scheduling mechanisms.
 
 ### [Containerization](containerization.md)
+
 Container fundamentals, runtimes, and how containers work within Kubernetes.
 
 ## Related Labs

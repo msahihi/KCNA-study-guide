@@ -1,12 +1,14 @@
 # Lab 02: Kubernetes Administration
 
 ## Objectives
+
 - Manage cluster resources with kubectl
 - Work with ConfigMaps and Secrets
 - Implement RBAC (Role-Based Access Control)
 - Manage resource requests and limits
 
 ## Prerequisites
+
 - Kubernetes cluster running
 - kubectl configured
 - Completion of Lab 01
@@ -14,6 +16,7 @@
 ## Exercise 1: kubectl Configuration and Context
 
 ### Task 1.1: Manage kubectl Contexts
+
 ```bash
 # View current context
 kubectl config current-context
@@ -32,6 +35,7 @@ kubectl config set-context --current --namespace=default
 ```
 
 ### Task 1.2: kubectl Output Formats
+
 ```bash
 # Default output
 kubectl get pods
@@ -55,7 +59,9 @@ kubectl get pods -o jsonpath='{.items[*].metadata.name}'
 ## Exercise 2: ConfigMaps
 
 ### Task 2.1: Create ConfigMaps
+
 Create `app-config.properties`:
+
 ```properties
 database_host=mysql.default.svc.cluster.local
 database_port=3306
@@ -78,7 +84,9 @@ kubectl describe configmap app-config
 ```
 
 ### Task 2.2: Use ConfigMap in Pod
+
 Create `pod-with-configmap.yaml`:
+
 ```yaml
 apiVersion: v1
 kind: Pod
@@ -126,6 +134,7 @@ kubectl logs app-with-config
 ## Exercise 3: Secrets
 
 ### Task 3.1: Create Secrets
+
 ```bash
 # Create secret from literal values
 kubectl create secret generic db-credentials \
@@ -149,7 +158,9 @@ kubectl get secret db-credentials -o jsonpath='{.data.password}' | base64 --deco
 ```
 
 ### Task 3.2: Use Secrets in Pods
+
 Create `pod-with-secret.yaml`:
+
 ```yaml
 apiVersion: v1
 kind: Pod
@@ -182,7 +193,9 @@ kubectl logs app-with-secret
 ```
 
 ### Task 3.3: Mount Secrets as Files
+
 Create `pod-with-secret-volume.yaml`:
+
 ```yaml
 apiVersion: v1
 kind: Pod
@@ -215,6 +228,7 @@ kubectl exec app-with-secret-volume -- cat /etc/secrets/username
 ## Exercise 4: RBAC (Role-Based Access Control)
 
 ### Task 4.1: Create a ServiceAccount
+
 ```bash
 # Create a namespace for testing
 kubectl create namespace rbac-test
@@ -228,7 +242,9 @@ kubectl describe serviceaccount app-sa -n rbac-test
 ```
 
 ### Task 4.2: Create a Role
+
 Create `pod-reader-role.yaml`:
+
 ```yaml
 apiVersion: rbac.authorization.k8s.io/v1
 kind: Role
@@ -254,7 +270,9 @@ kubectl describe role pod-reader -n rbac-test
 ```
 
 ### Task 4.3: Create a RoleBinding
+
 Create `pod-reader-binding.yaml`:
+
 ```yaml
 apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
@@ -281,7 +299,9 @@ kubectl describe rolebinding read-pods -n rbac-test
 ```
 
 ### Task 4.4: Test RBAC
+
 Create `test-rbac-pod.yaml`:
+
 ```yaml
 apiVersion: v1
 kind: Pod
@@ -308,7 +328,9 @@ kubectl exec -it rbac-test-pod -n rbac-test -- kubectl run test --image=nginx -n
 ```
 
 ### Task 4.5: Create ClusterRole and ClusterRoleBinding
+
 Create `cluster-pod-reader.yaml`:
+
 ```yaml
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
@@ -344,7 +366,9 @@ kubectl exec -it rbac-test-pod -n rbac-test -- kubectl get pods --all-namespaces
 ## Exercise 5: Resource Management
 
 ### Task 5.1: Set Resource Requests and Limits
+
 Create `pod-with-resources.yaml`:
+
 ```yaml
 apiVersion: v1
 kind: Pod
@@ -378,7 +402,9 @@ kubectl describe pod resource-demo | grep -A 5 "Requests"
 ```
 
 ### Task 5.2: LimitRange
+
 Create `limitrange.yaml`:
+
 ```yaml
 apiVersion: v1
 kind: LimitRange
@@ -412,7 +438,9 @@ kubectl describe limitrange resource-limits -n rbac-test
 ```
 
 ### Task 5.3: ResourceQuota
+
 Create `resourcequota.yaml`:
+
 ```yaml
 apiVersion: v1
 kind: ResourceQuota
@@ -478,6 +506,7 @@ kubectl run curl-test --image=curlimages/curl -i --rm --restart=Never -- curl ht
 ```
 
 ## Cleanup
+
 ```bash
 # Clean up resources
 kubectl delete namespace rbac-test
@@ -490,6 +519,7 @@ rm username.txt password.txt
 ## Challenge Exercise
 
 Create a complete RBAC setup:
+
 1. Create a namespace "team-a"
 2. Create a ServiceAccount "developer"
 3. Create a Role that allows:
@@ -510,6 +540,7 @@ Create a complete RBAC setup:
 - [ ] Practiced useful kubectl commands
 
 ## Additional Resources
+
 - [Configure Access to Multiple Clusters](https://kubernetes.io/docs/tasks/access-application-cluster/configure-access-multiple-clusters/)
 - [ConfigMaps](https://kubernetes.io/docs/concepts/configuration/configmap/)
 - [Secrets](https://kubernetes.io/docs/concepts/configuration/secret/)

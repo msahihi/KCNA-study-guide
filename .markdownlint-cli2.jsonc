@@ -1,0 +1,72 @@
+{
+  "config": {
+    // Default state for all rules
+    "default": true,
+
+    // Line length - disabled for code blocks and tables
+    "MD013": false,
+
+    // Multiple headers with same content - disabled for study guide structure
+    "MD024": {
+      "siblings_only": true
+    },
+
+    // Inline HTML - allowed for details/summary collapsibles
+    "MD033": false,
+
+    // Bare URLs - disabled as markdown links are used appropriately
+    "MD034": false,
+
+    // Code fence style
+    "MD046": {
+      "style": "fenced"
+    },
+
+    // Emphasis style
+    "MD049": {
+      "style": "asterisk"
+    },
+
+    // Strong style
+    "MD050": {
+      "style": "asterisk"
+    },
+
+    // First line in file should be top-level heading
+    "MD041": false,
+
+    // Emphasis as heading - allow for week/section markers
+    "MD036": false,
+
+    // Missing language for code blocks - warn but don't fail
+    "MD040": false,
+
+    // Ordered list prefix - allow flexible numbering
+    "MD029": false,
+
+    // Heading increment - allow skipping levels for structured content
+    "MD001": false,
+
+    // Table column style - allow flexible table formatting
+    "MD060": false,
+
+    // Proper names should have correct capitalization
+    "MD044": {
+      "names": [
+        "Kubernetes",
+        "kubectl",
+        "Docker",
+        "CNCF",
+        "KCNA",
+        "API",
+        "YAML",
+        "JSON",
+        "etcd",
+        "Helm",
+        "Prometheus",
+        "GitOps"
+      ],
+      "code_blocks": false
+    }
+  }
+}
