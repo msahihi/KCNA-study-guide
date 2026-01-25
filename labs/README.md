@@ -417,7 +417,7 @@ kubectl --as=admin get pods
 
 - [Kubernetes Slack](https://kubernetes.slack.com/)
 - [CNCF Slack](https://cloud-native.slack.com/)
-- [r/Kubernetes](https://reddit.com/r/kubernetes)
+- [r/Kubernetes](https://www.reddit.com/r/kubernetes)
 
 ## Lab Completion Tracker
 

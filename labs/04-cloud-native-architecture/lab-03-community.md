@@ -66,7 +66,7 @@ CNCF (Cloud Native Computing Foundation)
 # Key pages to explore:
 # - About: https://www.cncf.io/about/
 # - Projects: https://www.cncf.io/projects/
-# - Community: https://www.cncf.io/community/
+# - Community: https://www.cncf.io/
 # - Events: https://www.cncf.io/events/
 
 # CNCF GitHub
@@ -1027,12 +1027,12 @@ Complete a real contribution to the Kubernetes ecosystem:
 ## Additional Resources
 
 - [Kubernetes Community](https://kubernetes.io/community/)
-- [CNCF Community](https://www.cncf.io/community/)
+- [CNCF Community](https://www.cncf.io/)
 - [Kubernetes Contributor Guide](https://k8s.dev/guide)
 - [CNCF Code of Conduct](https://github.com/cncf/foundation/blob/master/code-of-conduct.md)
 - [LFX Mentorship](https://mentorship.lfx.linuxfoundation.org/)
 - [Kubernetes Blog](https://kubernetes.io/blog/)
-- [CNCF Calendar](https://www.cncf.io/community/calendar/)
+- [CNCF Calendar](https://www.cncf.io/calendar/)
 
 ---
 

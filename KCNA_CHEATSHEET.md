@@ -1315,7 +1315,7 @@ metadata:
 
 - [Kubernetes Slack](https://kubernetes.slack.com/)
 - [CNCF Slack #KCNA-exam-prep](https://cloud-native.slack.com)
-- [r/Kubernetes](https://reddit.com/r/kubernetes)
+- [r/Kubernetes](https://www.reddit.com/r/kubernetes)
 
 </details>
 
