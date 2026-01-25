@@ -161,20 +161,24 @@ Cloud native technologies empower organizations to build and run scalable applic
 - Transform data formats
 
 ### Circuit Breaker
+
 - Prevent cascading failures
 - Fast failure and recovery
 
 ### Retry and Timeout
+
 - Handle transient failures
 - Prevent indefinite waits
 
 ### Bulkhead
+
 - Isolate resources
 - Prevent resource exhaustion
 
 ## Cloud Providers and Kubernetes
 
 ### Managed Kubernetes Services
+
 - **AWS**: Elastic Kubernetes Service (EKS)
 - **Azure**: Azure Kubernetes Service (AKS)
 - **Google Cloud**: Google Kubernetes Engine (GKE)
