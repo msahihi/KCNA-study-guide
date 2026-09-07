@@ -26,10 +26,10 @@ B. Cordon marks node unschedulable; taint provides granular control with tolerat
 C. Cordon evicts pods; taint prevents scheduling  
 D. They are identical in functionality  
 
-**Answer: B**
-
 <details>
-<summary>Explanation</summary>
+<summary>Answer & Explanation</summary>
+
+**Answer: B**
 
 Key differences:
 
@@ -47,10 +47,10 @@ B. `kubectl create pod mypod --image=nginx`
 C. `kubectl run mypod --image=nginx`  
 D. `kubectl generate pod mypod --image=nginx`  
 
-**Answer: C**
-
 <details>
-<summary>Explanation</summary>
+<summary>Answer & Explanation</summary>
+
+**Answer: C**
 
 `kubectl run` is the imperative command to create pods. `kubectl apply -f` is declarative (uses YAML file). `kubectl create pod` is not a valid command format.
 
@@ -65,10 +65,10 @@ B. To determine when a container is ready to accept traffic
 C. To check if a container needs more resources  
 D. To monitor container logs  
 
-**Answer: B**
-
 <details>
-<summary>Explanation</summary>
+<summary>Answer & Explanation</summary>
+
+**Answer: B**
 
 Readiness probes tell Kubernetes when a container is ready to serve requests. Failed readiness probes remove the pod from service endpoints but don't restart the container. Liveness probes restart containers.
 
@@ -83,10 +83,10 @@ B. ReplicaSet
 C. ConfigMap  
 D. Namespace  
 
-**Answer: B**
-
 <details>
-<summary>Explanation</summary>
+<summary>Answer & Explanation</summary>
+
+**Answer: B**
 
 Deployments create and manage ReplicaSets, which in turn manage pods. The ReplicaSet ensures the desired number of pod replicas are running. Deployments handle rolling updates by creating new ReplicaSets.
 
@@ -101,10 +101,10 @@ B. kube-public
 C. default  
 D. production  
 
-**Answer: C**
-
 <details>
-<summary>Explanation</summary>
+<summary>Answer & Explanation</summary>
+
+**Answer: C**
 
 The default namespace is where resources are created if no namespace is specified. Other system namespaces: kube-system (system components), kube-public (publicly readable), kube-node-lease (node heartbeats).
 
@@ -119,10 +119,10 @@ B. DaemonSet
 C. Deployment  
 D. Job  
 
-**Answer: C**
-
 <details>
-<summary>Explanation</summary>
+<summary>Answer & Explanation</summary>
+
+**Answer: C**
 
 Stateless web applications are perfect for Deployments:
 
@@ -142,10 +142,10 @@ B. `kubectl config current-context`
 C. `kubectl context`  
 D. `kubectl get context`  
 
-**Answer: B**
-
 <details>
-<summary>Explanation</summary>
+<summary>Answer & Explanation</summary>
+
+**Answer: B**
 
 `kubectl config current-context` shows the active context. `kubectl config view` shows the entire config file. Contexts define cluster, user, and namespace combinations.
 
@@ -160,10 +160,10 @@ B. The ReplicaSet creates a new pod to maintain the desired count
 C. The deployment is automatically deleted  
 D. All containers in the pod are archived  
 
-**Answer: B**
-
 <details>
-<summary>Explanation</summary>
+<summary>Answer & Explanation</summary>
+
+**Answer: B**
 
 When a pod managed by a Deployment is deleted, the ReplicaSet controller immediately creates a replacement pod to maintain the desired replica count. This ensures high availability.
 
@@ -178,10 +178,10 @@ B. `kubectl tag pod <name> key=value`
 C. `kubectl annotate pod <name> key=value`  
 D. `kubectl set label pod <name> key=value`  
 
-**Answer: A**
-
 <details>
-<summary>Explanation</summary>
+<summary>Answer & Explanation</summary>
+
+**Answer: A**
 
 `kubectl label` adds or modifies labels. Add `--overwrite` to change existing labels. Remove labels with `key-` (minus sign). Annotations use `kubectl annotate` and are for non-identifying metadata.
 
@@ -196,10 +196,10 @@ B. To attach non-identifying metadata to objects
 C. To enforce security policies  
 D. To define resource requests  
 
-**Answer: B**
-
 <details>
-<summary>Explanation</summary>
+<summary>Answer & Explanation</summary>
+
+**Answer: B**
 
 Annotations store arbitrary metadata that doesn't identify objects (unlike labels). Common uses:
 
@@ -220,10 +220,10 @@ B. etcd
 C. Controller Manager  
 D. kubelet  
 
-**Answer: B**
-
 <details>
-<summary>Explanation</summary>
+<summary>Answer & Explanation</summary>
+
+**Answer: B**
 
 etcd is a distributed key-value store that holds the entire cluster state. The API server reads from and writes to etcd. All Kubernetes data is stored in etcd (pods, services, secrets, etc.).
 
@@ -238,10 +238,10 @@ B. `kubectl set replicas deployment myapp 5`
 C. `kubectl update deployment myapp --replicas=5`  
 D. `kubectl modify deployment myapp replicas=5`  
 
-**Answer: A**
-
 <details>
-<summary>Explanation</summary>
+<summary>Answer & Explanation</summary>
+
+**Answer: A**
 
 `kubectl scale` is the imperative command for scaling. It updates the replica count in the deployment spec. You can also edit the deployment YAML directly.
 
@@ -256,10 +256,10 @@ B. `kubectl stats pods`
 C. `kubectl usage pods`  
 D. `kubectl resources pods`  
 
-**Answer: A**
-
 <details>
-<summary>Explanation</summary>
+<summary>Answer & Explanation</summary>
+
+**Answer: A**
 
 `kubectl top` shows current resource usage (requires metrics-server). `kubectl top pods` shows CPU/memory per pod. `kubectl top nodes` shows node-level usage.
 
@@ -274,10 +274,10 @@ B. To allow pods to be scheduled on nodes with matching taints
 C. To increase pod priority  
 D. To define resource limits  
 
-**Answer: B**
-
 <details>
-<summary>Explanation</summary>
+<summary>Answer & Explanation</summary>
+
+**Answer: B**
 
 Tolerations allow pods to be scheduled on tainted nodes. A pod must have a toleration matching a node's taint to be scheduled there. Example:
 
@@ -304,10 +304,10 @@ B. `/etc/kubernetes/config`
 C. `~/kubectl.conf`  
 D. `/var/lib/kubelet/config`  
 
-**Answer: A**
-
 <details>
-<summary>Explanation</summary>
+<summary>Answer & Explanation</summary>
+
+**Answer: A**
 
 The default kubectl config file is `~/.kube/config`. It contains contexts, clusters, and user credentials. You can specify different config files with `--kubeconfig` or `KUBECONFIG` environment variable.
 
@@ -322,10 +322,10 @@ B. The container is killed and restarted according to restart policy
 C. The pod is deleted immediately  
 D. Nothing, it's just logged  
 
-**Answer: B**
-
 <details>
-<summary>Explanation</summary>
+<summary>Answer & Explanation</summary>
+
+**Answer: B**
 
 Startup probes protect slow-starting containers. If startup probe fails after all retries, the container is killed and restarted. Liveness and readiness probes are disabled until startup succeeds.
 
@@ -340,10 +340,10 @@ B. `kubectl logs events`
 C. `kubectl describe events`  
 D. `kubectl show events`  
 
-**Answer: A**
-
 <details>
-<summary>Explanation</summary>
+<summary>Answer & Explanation</summary>
+
+**Answer: A**
 
 `kubectl get events` lists cluster events. Add `--watch` to stream events. Events show pod scheduling, image pulls, errors, and warnings. Events are namespace-scoped.
 
@@ -358,10 +358,10 @@ B. To request storage resources from a PersistentVolume
 C. To delete unused volumes  
 D. To configure network storage  
 
-**Answer: B**
-
 <details>
-<summary>Explanation</summary>
+<summary>Answer & Explanation</summary>
+
+**Answer: B**
 
 PersistentVolumeClaims (PVCs) request storage. Workflow:
 
@@ -381,10 +381,10 @@ B. `kubectl apply -f file.yaml`
 C. Both A and B  
 D. `kubectl generate -f file.yaml`  
 
-**Answer: C**
-
 <details>
-<summary>Explanation</summary>
+<summary>Answer & Explanation</summary>
+
+**Answer: C**
 
 Both commands work:
 
@@ -402,10 +402,10 @@ B. To manage network rules for pod communication
 C. To store cluster configuration  
 D. To run containers  
 
-**Answer: B**
-
 <details>
-<summary>Explanation</summary>
+<summary>Answer & Explanation</summary>
+
+**Answer: B**
 
 kube-proxy runs on each node and manages network rules (iptables/IPVS). It enables:
 
@@ -424,10 +424,10 @@ B. Restricted
 C. Privileged  
 D. Permissive  
 
-**Answer: C**
-
 <details>
-<summary>Explanation</summary>
+<summary>Answer & Explanation</summary>
+
+**Answer: C**
 
 The Privileged Pod Security Standard is unrestricted, allowing:
 
@@ -448,10 +448,10 @@ B. `kubectl drain <node> --ignore-daemonsets`
 C. `kubectl evict <node> --all`  
 D. `kubectl cordon <node> --evict`  
 
-**Answer: B**
-
 <details>
-<summary>Explanation</summary>
+<summary>Answer & Explanation</summary>
+
+**Answer: B**
 
 `kubectl drain` evicts pods and cordons the node. `--ignore-daemonsets` is required because DaemonSet pods can't be drained (they run on every node). Use `--force` for pods not managed by controllers.
 
@@ -466,10 +466,10 @@ B. ReplicaSet
 C. Job  
 D. CronJob  
 
-**Answer: C**
-
 <details>
-<summary>Explanation</summary>
+<summary>Answer & Explanation</summary>
+
+**Answer: C**
 
 Jobs create pods that run to completion. They ensure tasks finish successfully:
 
@@ -490,10 +490,10 @@ B. Jobs run once; CronJobs run on a schedule
 C. Jobs are for batch processing; CronJobs are for web services  
 D. There is no difference  
 
-**Answer: B**
-
 <details>
-<summary>Explanation</summary>
+<summary>Answer & Explanation</summary>
+
+**Answer: B**
 
 - **Job**: Runs once, ensures completion
 - **CronJob**: Creates Jobs on a schedule (cron format)
@@ -511,10 +511,10 @@ B. `kubectl export <resource> <name> --format=yaml`
 C. `kubectl describe <resource> <name> --yaml`  
 D. `kubectl show <resource> <name> -o yaml`  
 
-**Answer: A**
-
 <details>
-<summary>Explanation</summary>
+<summary>Answer & Explanation</summary>
+
+**Answer: A**
 
 `-o yaml` outputs in YAML format. Other formats: `-o json`, `-o wide`, `-o name`. Useful for backing up resources or creating templates.
 
@@ -529,10 +529,10 @@ B. To identify which pods the service routes traffic to
 C. To select which nodes can run the service  
 D. To configure service type  
 
-**Answer: B**
-
 <details>
-<summary>Explanation</summary>
+<summary>Answer & Explanation</summary>
+
+**Answer: B**
 
 Services use selectors to identify target pods. Example:
 
@@ -557,10 +557,10 @@ B. Deployment
 C. Node Controller  
 D. Scheduler  
 
-**Answer: C**
-
 <details>
-<summary>Explanation</summary>
+<summary>Answer & Explanation</summary>
+
+**Answer: C**
 
 The Node Controller is part of the controller-manager. It:
 
@@ -584,10 +584,10 @@ B. When you need stable network identifiers and persistent storage
 C. When you want faster deployments  
 D. When you don't need rolling updates  
 
-**Answer: B**
-
 <details>
-<summary>Explanation</summary>
+<summary>Answer & Explanation</summary>
+
+**Answer: B**
 
 Use StatefulSet when applications require:
 
@@ -609,10 +609,10 @@ B. pod-2, pod-1, pod-0
 C. Random order  
 D. All terminate simultaneously  
 
-**Answer: B**
-
 <details>
-<summary>Explanation</summary>
+<summary>Answer & Explanation</summary>
+
+**Answer: B**
 
 StatefulSets terminate pods in reverse order of their ordinals:
 
@@ -632,10 +632,10 @@ B. PersistentVolume
 C. configMap  
 D. secret  
 
-**Answer: B**
-
 <details>
-<summary>Explanation</summary>
+<summary>Answer & Explanation</summary>
+
+**Answer: B**
 
 PersistentVolumes provide durable storage that persists beyond pod lifecycle. emptyDir is deleted when the pod is removed. PVs enable:
 
@@ -654,10 +654,10 @@ B. Enhancing the main container with additional functionality (logging, monitori
 C. Scheduling the main container  
 D. Storing backup data  
 
-**Answer: B**
-
 <details>
-<summary>Explanation</summary>
+<summary>Answer & Explanation</summary>
+
+**Answer: B**
 
 Sidecar pattern uses:
 
@@ -679,10 +679,10 @@ B. Egress
 C. Outbound  
 D. External  
 
-**Answer: B**
-
 <details>
-<summary>Explanation</summary>
+<summary>Answer & Explanation</summary>
+
+**Answer: B**
 
 Network Policy directions:
 
@@ -702,10 +702,10 @@ B. To create network storage
 C. To share data between pods  
 D. To store secrets  
 
-**Answer: A**
-
 <details>
-<summary>Explanation</summary>
+<summary>Answer & Explanation</summary>
+
+**Answer: A**
 
 hostPath volumes mount a file or directory from the node's filesystem. Use cases:
 
@@ -726,10 +726,10 @@ B. CRI-O
 C. rkt (unmaintained)  
 D. Docker Engine (without dockershim)  
 
-**Answer: D**
-
 <details>
-<summary>Explanation</summary>
+<summary>Answer & Explanation</summary>
+
+**Answer: D**
 
 CRI-compliant runtimes:
 
@@ -750,10 +750,10 @@ B. CPU, memory, and custom metrics
 C. Network traffic only  
 D. Disk I/O only  
 
-**Answer: B**
-
 <details>
-<summary>Explanation</summary>
+<summary>Answer & Explanation</summary>
+
+**Answer: B**
 
 HPA supports multiple metric sources:
 
@@ -774,10 +774,10 @@ B. StatefulSet
 C. DaemonSet  
 D. ReplicaSet  
 
-**Answer: C**
-
 <details>
-<summary>Explanation</summary>
+<summary>Answer & Explanation</summary>
+
+**Answer: C**
 
 DaemonSets run one pod per node, perfect for:
 
@@ -797,10 +797,10 @@ B. To assign pods to nodes based on resource requirements and constraints
 C. To manage container lifecycle  
 D. To handle network routing  
 
-**Answer: B**
-
 <details>
-<summary>Explanation</summary>
+<summary>Answer & Explanation</summary>
+
+**Answer: B**
 
 Scheduler responsibilities:
 
@@ -822,10 +822,10 @@ B. Enable encryption in the API server configuration
 C. Use base64 encoding  
 D. Store them in ConfigMaps instead  
 
-**Answer: B**
-
 <details>
-<summary>Explanation</summary>
+<summary>Answer & Explanation</summary>
+
+**Answer: B**
 
 Secrets are base64 encoded by default (NOT encrypted). To encrypt:
 
@@ -845,10 +845,10 @@ B. Base64 encoding (not encrypted)
 C. SHA-256 hashing  
 D. Plain text  
 
-**Answer: B**
-
 <details>
-<summary>Explanation</summary>
+<summary>Answer & Explanation</summary>
+
+**Answer: B**
 
 Important distinction:
 
@@ -868,10 +868,10 @@ B. PreferNoSchedule
 C. NoExecute  
 D. EvictAll  
 
-**Answer: C**
-
 <details>
-<summary>Explanation</summary>
+<summary>Answer & Explanation</summary>
+
+**Answer: C**
 
 Taint effects:
 
@@ -892,10 +892,10 @@ B. Apply a taint to the node and add tolerations to GPU pods
 C. Use a StatefulSet  
 D. Label the pods only  
 
-**Answer: B**
-
 <details>
-<summary>Explanation</summary>
+<summary>Answer & Explanation</summary>
+
+**Answer: B**
 
 Dedicated node pattern:
 
@@ -928,10 +928,10 @@ B. The pod is scheduled but runs slowly
 C. The pod cannot be scheduled on that node  
 D. The taint is removed  
 
-**Answer: C**
-
 <details>
-<summary>Explanation</summary>
+<summary>Answer & Explanation</summary>
+
+**Answer: C**
 
 Taints repel pods. Without matching tolerations, the scheduler skips tainted nodes. This is how you dedicate nodes to specific workloads or prevent certain pods from running.
 
@@ -946,10 +946,10 @@ B. StatefulSet
 C. DaemonSet  
 D. ReplicaSet  
 
-**Answer: B**
-
 <details>
-<summary>Explanation</summary>
+<summary>Answer & Explanation</summary>
+
+**Answer: B**
 
 StatefulSets guarantee ordering:
 
@@ -970,10 +970,10 @@ B. ConfigMap is encrypted; Secret is not
 C. They are identical  
 D. ConfigMap is only for environment variables  
 
-**Answer: A**
-
 <details>
-<summary>Explanation</summary>
+<summary>Answer & Explanation</summary>
+
+**Answer: A**
 
 - **ConfigMap**: Configuration, environment variables, config files
 - **Secret**: Passwords, tokens, SSH keys, TLS certificates
@@ -999,10 +999,10 @@ B. For GitOps-based continuous delivery across multiple clusters
 C. For building container images  
 D. For monitoring applications  
 
-**Answer: B**
-
 <details>
-<summary>Explanation</summary>
+<summary>Answer & Explanation</summary>
+
+**Answer: B**
 
 Choose ArgoCD when you need:
 
@@ -1025,10 +1025,10 @@ B. To package and manage Kubernetes applications
 C. To build container images  
 D. To manage network policies  
 
-**Answer: B**
-
 <details>
-<summary>Explanation</summary>
+<summary>Answer & Explanation</summary>
+
+**Answer: B**
 
 Helm is a package manager that:
 
@@ -1049,10 +1049,10 @@ B. Configuration parameters that can be customized
 C. Network policies  
 D. User authentication tokens  
 
-**Answer: B**
-
 <details>
-<summary>Explanation</summary>
+<summary>Answer & Explanation</summary>
+
+**Answer: B**
 
 values.YAML contains:
 
@@ -1073,10 +1073,10 @@ B. Canary deployment
 C. Rolling update  
 D. Recreate  
 
-**Answer: B**
-
 <details>
-<summary>Explanation</summary>
+<summary>Answer & Explanation</summary>
+
+**Answer: B**
 
 Deployment strategies:
 
@@ -1098,10 +1098,10 @@ B. Declarative, version-controlled infrastructure and automatic synchronization
 C. Lower costs  
 D. Simpler networking  
 
-**Answer: B**
-
 <details>
-<summary>Explanation</summary>
+<summary>Answer & Explanation</summary>
+
+**Answer: B**
 
 GitOps benefits:
 
@@ -1123,10 +1123,10 @@ B. Gateway
 C. HTTPRoute  
 D. Service  
 
-**Answer: B**
-
 <details>
-<summary>Explanation</summary>
+<summary>Answer & Explanation</summary>
+
+**Answer: B**
 
 Gateway API resources:
 
@@ -1147,10 +1147,10 @@ B. It supports multiple protocols (HTTP, TCP, UDP, gRPC) and has role-oriented d
 C. It requires less configuration  
 D. It uses less memory  
 
-**Answer: B**
-
 <details>
-<summary>Explanation</summary>
+<summary>Answer & Explanation</summary>
+
+**Answer: B**
 
 Gateway API advantages:
 
@@ -1171,10 +1171,10 @@ B. To implement the rules defined in Ingress resources
 C. To manage secrets  
 D. To monitor applications  
 
-**Answer: B**
-
 <details>
-<summary>Explanation</summary>
+<summary>Answer & Explanation</summary>
+
+**Answer: B**
 
 Ingress controllers:
 
@@ -1196,10 +1196,10 @@ B. Git repository as the source of truth for desired state
 C. Direct kubectl commands  
 D. Binary configuration files  
 
-**Answer: B**
-
 <details>
-<summary>Explanation</summary>
+<summary>Answer & Explanation</summary>
+
+**Answer: B**
 
 GitOps core practices:
 
@@ -1224,10 +1224,10 @@ B. Jaeger
 C. Fluentd  
 D. CoreDNS  
 
-**Answer: B**
-
 <details>
-<summary>Explanation</summary>
+<summary>Answer & Explanation</summary>
+
+**Answer: B**
 
 Distributed tracing tools:
 
@@ -1248,10 +1248,10 @@ B. Metrics (time-series data)
 C. Distributed traces  
 D. Container images  
 
-**Answer: B**
-
 <details>
-<summary>Explanation</summary>
+<summary>Answer & Explanation</summary>
+
+**Answer: B**
 
 Prometheus collects:
 
@@ -1274,10 +1274,10 @@ B. The complete journey of a request through multiple services
 C. A network packet  
 D. A container event  
 
-**Answer: B**
-
 <details>
-<summary>Explanation</summary>
+<summary>Answer & Explanation</summary>
+
+**Answer: B**
 
 Tracing terminology:
 
@@ -1298,10 +1298,10 @@ B. Never
 C. IfNotPresent  
 D. OnDemand  
 
-**Answer: C**
-
 <details>
-<summary>Explanation</summary>
+<summary>Answer & Explanation</summary>
+
+**Answer: C**
 
 Image pull policies:
 
@@ -1322,10 +1322,10 @@ B. To provide a vendor-neutral home for open-source cloud-native projects
 C. To replace Kubernetes  
 D. To compete with major cloud providers  
 
-**Answer: B**
-
 <details>
-<summary>Explanation</summary>
+<summary>Answer & Explanation</summary>
+
+**Answer: B**
 
 CNCF mission:
 
@@ -1347,10 +1347,10 @@ B. Manual intervention
 C. Resilience and fault tolerance  
 D. Single point of failure  
 
-**Answer: C**
-
 <details>
-<summary>Explanation</summary>
+<summary>Answer & Explanation</summary>
+
+**Answer: C**
 
 Cloud-native resilience principles:
 
@@ -1373,10 +1373,10 @@ B. DaemonSet
 C. StatefulSet  
 D. Job  
 
-**Answer: C**
-
 <details>
-<summary>Explanation</summary>
+<summary>Answer & Explanation</summary>
+
+**Answer: C**
 
 Message queues like Kafka require:
 

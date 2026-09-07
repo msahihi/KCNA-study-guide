@@ -26,10 +26,10 @@ B. `kubectl cordon node1`
 C. `kubectl drain node1`  
 D. `kubectl delete node node1`  
 
-**Answer: B**
-
 <details>
-<summary>Explanation</summary>
+<summary>Answer & Explanation</summary>
+
+**Answer: B**
 
 `kubectl cordon` marks a node as unschedulable, preventing new pods from being scheduled while existing pods continue running. This is ideal for temporary maintenance. Option A (taint) is more complex and requires pod tolerations. Option C (drain) would evict existing pods. Option D would remove the node entirely.
 
@@ -44,10 +44,10 @@ B. To perform setup tasks that must complete before the main container starts
 C. To monitor the health of the main container  
 D. To handle network traffic for the main container  
 
-**Answer: B**
-
 <details>
-<summary>Explanation</summary>
+<summary>Answer & Explanation</summary>
+
+**Answer: B**
 
 Init containers run to completion before the main application containers start. They're used for setup tasks like waiting for services, populating volumes, or running initialization scripts. They don't run alongside the main container (that's a sidecar).
 
@@ -62,10 +62,11 @@ B. `kubectl create deployment web-app --image=nginx`
 C. `kubectl deploy web-app --image=nginx`  
 D. `kubectl apply deployment web-app --image=nginx`  
 
-**Answer: B**
 
 <details>
-<summary>Explanation</summary>
+<summary>Answer & Explanation</summary>
+
+**Answer: B**
 
 `kubectl create deployment` creates a deployment resource. Option A creates a pod, not a deployment. Options C and D use non-existent commands.
 
@@ -80,10 +81,11 @@ B. `kubectl create` is deprecated; `kubectl run` is the new standard
 C. They are identical commands with different syntax  
 D. `kubectl create` is for YAML files only; `kubectl run` is for command-line creation  
 
-**Answer: A**
 
 <details>
-<summary>Explanation</summary>
+<summary>Answer & Explanation</summary>
+
+**Answer: A**
 
 `kubectl create` is a general command for creating any Kubernetes resource from specifications. `kubectl run` was historically used for creating deployments but now primarily creates pods. Neither is deprecated.
 
@@ -98,10 +100,10 @@ B. Baseline
 C. Restricted  
 D. Default  
 
-**Answer: C**
-
 <details>
-<summary>Explanation</summary>
+<summary>Answer & Explanation</summary>
+
+**Answer: C**
 
 The three Pod Security Standards are:
 
@@ -120,10 +122,10 @@ B. StatefulSet
 C. DaemonSet  
 D. Job  
 
-**Answer: B**
-
 <details>
-<summary>Explanation</summary>
+<summary>Answer & Explanation</summary>
+
+**Answer: B**
 
 Databases require:
 
@@ -144,10 +146,10 @@ B. Existing pods continue running; no new pods can be scheduled
 C. Pods are gracefully terminated  
 D. The node is removed from the cluster  
 
-**Answer: B**
-
 <details>
-<summary>Explanation</summary>
+<summary>Answer & Explanation</summary>
+
+**Answer: B**
 
 `kubectl cordon` only affects scheduling of new pods. Existing pods remain running. To evict existing pods, you would use `kubectl drain`.
 
@@ -162,10 +164,10 @@ B. `kubectl get logs <pod-name>`
 C. `kubectl logs <pod-name>`  
 D. `kubectl inspect <pod-name>`  
 
-**Answer: C**
-
 <details>
-<summary>Explanation</summary>
+<summary>Answer & Explanation</summary>
+
+**Answer: C**
 
 `kubectl logs` retrieves container logs. Add `-c <container-name>` for multi-container pods. `kubectl describe` shows events and metadata, not logs.
 
@@ -180,10 +182,10 @@ B. To organize and isolate resources within a cluster
 C. To define pod security policies  
 D. To manage container images  
 
-**Answer: B**
-
 <details>
-<summary>Explanation</summary>
+<summary>Answer & Explanation</summary>
+
+**Answer: B**
 
 Namespaces provide a way to divide cluster resources between multiple users or projects. They provide scope for names and can have resource quotas. They don't provide network isolation by default (Network Policies do that).
 
@@ -198,10 +200,10 @@ B. kube-proxy
 C. kube-scheduler  
 D. controller-manager  
 
-**Answer: C**
-
 <details>
-<summary>Explanation</summary>
+<summary>Answer & Explanation</summary>
+
+**Answer: C**
 
 The kube-scheduler watches for newly created pods and assigns them to nodes based on resource requirements, constraints, and policies. kubelet runs on nodes and ensures containers are running. kube-proxy handles network rules.
 
@@ -216,10 +218,10 @@ B. `kubectl patch deployment <name> -p '{"spec":{"replicas":5}}'`
 C. `kubectl scale deployment <name> --replicas=5`  
 D. All of the above  
 
-**Answer: D**
-
 <details>
-<summary>Explanation</summary>
+<summary>Answer & Explanation</summary>
+
+**Answer: D**
 
 All three methods can modify a deployment's replica count:
 
@@ -238,10 +240,10 @@ B. `kubectl run <name> --image=<image> --restart=Never`
 C. `kubectl apply -f pod.yaml --once`  
 D. `kubectl execute <name> --image=<image>`  
 
-**Answer: B**
-
 <details>
-<summary>Explanation</summary>
+<summary>Answer & Explanation</summary>
+
+**Answer: B**
 
 The `--restart=Never` flag creates a pod that won't be restarted after completion, running only once. Default restart policy is "Always".
 
@@ -256,10 +258,10 @@ B. OnFailure
 C. Always  
 D. RestartOnError  
 
-**Answer: C**
-
 <details>
-<summary>Explanation</summary>
+<summary>Answer & Explanation</summary>
+
+**Answer: C**
 
 The default restart policy for pods is "Always", meaning containers will be restarted regardless of exit status. Other options are "OnFailure" and "Never".
 
@@ -274,10 +276,10 @@ B. ReplicaSet
 C. Service  
 D. ConfigMap  
 
-**Answer: B**
-
 <details>
-<summary>Explanation</summary>
+<summary>Answer & Explanation</summary>
+
+**Answer: B**
 
 A ReplicaSet ensures that a specified number of pod replicas are running at any given time. Deployments manage ReplicaSets, and ReplicaSets manage pods.
 
@@ -292,10 +294,10 @@ B. `kubectl update deployment/<name> --image=<new-image>`
 C. `kubectl modify deployment/<name> image=<new-image>`  
 D. `kubectl change deployment/<name> --image=<new-image>`  
 
-**Answer: A**
-
 <details>
-<summary>Explanation</summary>
+<summary>Answer & Explanation</summary>
+
+**Answer: A**
 
 `kubectl set image` is the imperative command to update container images. Other commands listed don't exist in kubectl.
 
@@ -310,10 +312,10 @@ B. To organize and select groups of objects
 C. To define resource quotas  
 D. To configure network policies  
 
-**Answer: B**
-
 <details>
-<summary>Explanation</summary>
+<summary>Answer & Explanation</summary>
+
+**Answer: B**
 
 Labels are key-value pairs attached to objects for organization and selection. Selectors use labels to identify groups of resources. They're essential for Services, Deployments, and other controllers.
 
@@ -328,10 +330,10 @@ B. XML
 C. YAML or JSON  
 D. TOML  
 
-**Answer: C**
-
 <details>
-<summary>Explanation</summary>
+<summary>Answer & Explanation</summary>
+
+**Answer: C**
 
 Kubernetes accepts both YAML and JSON for resource definitions. YAML is more commonly used because it's more human-readable and supports comments.
 
@@ -346,10 +348,10 @@ B. The smallest deployable unit that can contain one or more containers
 C. A group of nodes  
 D. A storage volume  
 
-**Answer: B**
-
 <details>
-<summary>Explanation</summary>
+<summary>Answer & Explanation</summary>
+
+**Answer: B**
 
 A pod is the smallest and simplest Kubernetes object. It can contain one or more tightly coupled containers that share storage and network resources.
 
@@ -364,10 +366,10 @@ B. `kubectl inspect <resource> <name>`
 C. `kubectl describe <resource> <name>`  
 D. `kubectl info <resource> <name>`  
 
-**Answer: C**
-
 <details>
-<summary>Explanation</summary>
+<summary>Answer & Explanation</summary>
+
+**Answer: C**
 
 `kubectl describe` provides detailed information about a resource, including events, conditions, and relationships. `kubectl get -o wide` shows additional columns but less detail than describe.
 
@@ -382,10 +384,10 @@ B. To expose pods to network traffic
 C. To schedule pods on nodes  
 D. To manage pod lifecycle  
 
-**Answer: B**
-
 <details>
-<summary>Explanation</summary>
+<summary>Answer & Explanation</summary>
+
+**Answer: B**
 
 A Service provides stable networking for pods. It creates a stable IP address and DNS name and load balances traffic across matching pods. Services abstract pod IP addresses which change when pods are recreated.
 
@@ -400,10 +402,10 @@ B. Baseline
 C. Restricted  
 D. Enhanced  
 
-**Answer: C**
-
 <details>
-<summary>Explanation</summary>
+<summary>Answer & Explanation</summary>
+
+**Answer: C**
 
 The Restricted Pod Security Standard is the most secure, enforcing pod hardening best practices. It prevents privilege escalation, requires running as non-root, and restricts capabilities.
 
@@ -418,10 +420,10 @@ B. `kubectl untaint nodes <node> key`
 C. `kubectl remove taint <node> key`  
 D. `kubectl delete taint <node> key`  
 
-**Answer: A**
-
 <details>
-<summary>Explanation</summary>
+<summary>Answer & Explanation</summary>
+
+**Answer: A**
 
 The minus sign (-) at the end removes a taint. Format: `kubectl taint nodes <node> <key>:<effect>-`
 
@@ -436,10 +438,10 @@ B. ConfigMap
 C. Volume  
 D. PersistentVolume  
 
-**Answer: B**
-
 <details>
-<summary>Explanation</summary>
+<summary>Answer & Explanation</summary>
+
+**Answer: B**
 
 ConfigMaps store non-sensitive configuration data as key-value pairs or files. Secrets are for sensitive data. Both can be consumed as environment variables or mounted as files.
 
@@ -454,10 +456,10 @@ B. Manage the API server
 C. Ensure containers are running on a node  
 D. Route network traffic  
 
-**Answer: C**
-
 <details>
-<summary>Explanation</summary>
+<summary>Answer & Explanation</summary>
+
+**Answer: C**
 
 kubelet is the node agent that ensures containers are running as specified in pod specifications. It communicates with the API server and manages container runtime.
 
@@ -472,10 +474,10 @@ B. `kubectl get pods --all`
 C. `kubectl get pods --all-namespaces`  
 D. `kubectl get pods -n *`  
 
-**Answer: C**
-
 <details>
-<summary>Explanation</summary>
+<summary>Answer & Explanation</summary>
+
+**Answer: C**
 
 The `--all-namespaces` flag (or `-A`) shows resources across all namespaces. Without it, kubectl only shows resources in the current namespace.
 
@@ -490,10 +492,10 @@ B. The container is restarted
 C. The pod is deleted  
 D. Nothing, it's just a warning  
 
-**Answer: B**
-
 <details>
-<summary>Explanation</summary>
+<summary>Answer & Explanation</summary>
+
+**Answer: B**
 
 When a liveness probe fails repeatedly, Kubernetes restarts the container. Readiness probes stop traffic but don't restart. Startup probes protect slow-starting containers.
 
@@ -508,10 +510,10 @@ B. `kubectl run <pod-name> <command>`
 C. `kubectl execute <pod-name> <command>`  
 D. `kubectl ssh <pod-name> <command>`  
 
-**Answer: A**
-
 <details>
-<summary>Explanation</summary>
+<summary>Answer & Explanation</summary>
+
+**Answer: A**
 
 `kubectl exec` executes commands in a running container. The `--` separates kubectl arguments from the command to execute. Add `-it` for interactive terminal.
 
@@ -530,10 +532,10 @@ B. To ensure a specified number of pod replicas are running
 C. To run pods that perform batch jobs  
 D. To manage stateful applications  
 
-**Answer: A**
-
 <details>
-<summary>Explanation</summary>
+<summary>Answer & Explanation</summary>
+
+**Answer: A**
 
 DaemonSets ensure that a pod runs on every node (or selected nodes using node selectors). Common use cases include log collectors, monitoring agents, and storage daemons.
 
@@ -548,10 +550,10 @@ B. CRI-O
 C. Docker Engine (via dockershim)  
 D. Both A and B  
 
-**Answer: D**
-
 <details>
-<summary>Explanation</summary>
+<summary>Answer & Explanation</summary>
+
+**Answer: D**
 
 Both containerd and CRI-O implement the Container Runtime Interface and can be used with Kubernetes. Docker Engine requires dockershim (deprecated) or containerd.
 
@@ -566,10 +568,10 @@ B. PersistentVolume with ReadWriteOnce access mode
 C. hostPath  
 D. ConfigMap  
 
-**Answer: B**
-
 <details>
-<summary>Explanation</summary>
+<summary>Answer & Explanation</summary>
+
+**Answer: B**
 
 StatefulSets require persistent storage that survives pod rescheduling. PersistentVolumes with ReadWriteOnce provide dedicated storage per pod. emptyDir is ephemeral and deleted when pods are removed.
 
@@ -584,10 +586,10 @@ B. StatefulSets cannot be scaled
 C. Deployments require more resources  
 D. StatefulSets do not support rolling updates  
 
-**Answer: A**
-
 <details>
-<summary>Explanation</summary>
+<summary>Answer & Explanation</summary>
+
+**Answer: A**
 
 Key differences:
 
@@ -605,10 +607,10 @@ B. Ingress
 C. Both A and B  
 D. Route  
 
-**Answer: B**
-
 <details>
-<summary>Explanation</summary>
+<summary>Answer & Explanation</summary>
+
+**Answer: B**
 
 Network Policies have two types:
 
@@ -628,10 +630,10 @@ B. To extend or enhance the functionality of the main container
 C. To schedule the main container  
 D. To monitor node health  
 
-**Answer: B**
-
 <details>
-<summary>Explanation</summary>
+<summary>Answer & Explanation</summary>
+
+**Answer: B**
 
 Sidecar containers run alongside the main container in the same pod, sharing network and storage. Common uses: logging, monitoring, proxies, service mesh. They enhance without replacing the main container.
 
@@ -646,10 +648,10 @@ B. hostPath
 C. emptyDir  
 D. nfs  
 
-**Answer: C**
-
 <details>
-<summary>Explanation</summary>
+<summary>Answer & Explanation</summary>
+
+**Answer: C**
 
 emptyDir is a temporary volume that exists as long as the pod runs. It's shared between all containers in the pod. When the pod is removed, the emptyDir is deleted. Perfect for scratch space or sharing files between containers.
 
@@ -664,10 +666,10 @@ B. CPU utilization, memory, or custom metrics
 C. Network traffic only  
 D. Storage usage  
 
-**Answer: B**
-
 <details>
-<summary>Explanation</summary>
+<summary>Answer & Explanation</summary>
+
+**Answer: B**
 
 HPA can scale based on:
 
@@ -687,10 +689,10 @@ B. No, because DaemonSets run one pod per node by design
 C. Yes, but only for CPU metrics  
 D. No, DaemonSets don't support scaling  
 
-**Answer: B**
-
 <details>
-<summary>Explanation</summary>
+<summary>Answer & Explanation</summary>
+
+**Answer: B**
 
 DaemonSets maintain one pod per node (or selected nodes). Horizontal scaling doesn't make sense for DaemonSets since you can't have multiple pods of the same DaemonSet on one node.
 
@@ -705,10 +707,10 @@ B. Monitoring pod health
 C. Considering resource requirements when placing pods  
 D. Respecting node taints and pod tolerations  
 
-**Answer: B**
-
 <details>
-<summary>Explanation</summary>
+<summary>Answer & Explanation</summary>
+
+**Answer: B**
 
 The scheduler assigns pods to nodes. It doesn't monitor pod health (kubelet does that via probes). Scheduler responsibilities:
 
@@ -727,10 +729,10 @@ B. Secret
 C. Volume  
 D. Environment variables only  
 
-**Answer: B**
-
 <details>
-<summary>Explanation</summary>
+<summary>Answer & Explanation</summary>
+
+**Answer: B**
 
 Secrets are designed to store sensitive information like passwords, OAuth tokens, and SSH keys. While not encrypted by default, they're more secure than ConfigMaps and can be encrypted at rest with proper configuration.
 
@@ -745,10 +747,10 @@ B. Base64 encoded (not encrypted)
 C. Plain text  
 D. Hashed with SHA-256  
 
-**Answer: B**
-
 <details>
-<summary>Explanation</summary>
+<summary>Answer & Explanation</summary>
+
+**Answer: B**
 
 By default, Secrets are only base64 encoded, NOT encrypted. Base64 is encoding, not encryption—anyone with access to etcd can decode them. Enable encryption at rest in API server configuration for true security.
 
@@ -763,10 +765,10 @@ B. Node selector or node affinity
 C. DaemonSet  
 D. Taints only  
 
-**Answer: B**
-
 <details>
-<summary>Explanation</summary>
+<summary>Answer & Explanation</summary>
+
+**Answer: B**
 
 To target specific hardware:
 
@@ -785,10 +787,10 @@ B. NoSchedule
 C. PreferNoSchedule  
 D. PreventSchedule  
 
-**Answer: B**
-
 <details>
-<summary>Explanation</summary>
+<summary>Answer & Explanation</summary>
+
+**Answer: B**
 
 Taint effects:
 
@@ -807,10 +809,10 @@ B. Taint with NoExecute effect
 C. kubectl drain command  
 D. All of the above  
 
-**Answer: D**
-
 <details>
-<summary>Explanation</summary>
+<summary>Answer & Explanation</summary>
+
+**Answer: D**
 
 Pods can be evicted by:
 
@@ -830,10 +832,10 @@ B. To provide an identity for pods to interact with the Kubernetes API
 C. To manage node authentication  
 D. To store user passwords  
 
-**Answer: B**
-
 <details>
-<summary>Explanation</summary>
+<summary>Answer & Explanation</summary>
+
+**Answer: B**
 
 Service Accounts provide an identity for processes running in pods. They allow pods to authenticate with the API server and access cluster resources. Each namespace has a default service account.
 
@@ -848,10 +850,10 @@ B. DaemonSet
 C. Deployment  
 D. Job  
 
-**Answer: C**
-
 <details>
-<summary>Explanation</summary>
+<summary>Answer & Explanation</summary>
+
+**Answer: C**
 
 Web applications that proxy or send traffic are stateless. They don't need persistent storage or stable identity. Deployments are perfect for stateless applications that can be scaled horizontally.
 
@@ -870,10 +872,10 @@ B. GitOps continuous delivery for Kubernetes
 C. Log aggregation  
 D. Network routing  
 
-**Answer: B**
-
 <details>
-<summary>Explanation</summary>
+<summary>Answer & Explanation</summary>
+
+**Answer: B**
 
 ArgoCD is a declarative GitOps continuous delivery tool. It monitors Git repositories and automatically synchronizes the desired state to Kubernetes clusters. Perfect for multi-cluster deployments and automated delivery.
 
@@ -888,10 +890,10 @@ B. To monitor cluster performance
 C. To manage container images  
 D. To configure network policies  
 
-**Answer: A**
-
 <details>
-<summary>Explanation</summary>
+<summary>Answer & Explanation</summary>
+
+**Answer: A**
 
 Helm is a package manager for Kubernetes. It uses templates (charts) to define, install, and upgrade Kubernetes applications. Charts can be versioned, shared, and customized with values files.
 
@@ -906,10 +908,10 @@ B. A package of Kubernetes resources
 C. A network topology diagram  
 D. A container image registry  
 
-**Answer: B**
-
 <details>
-<summary>Explanation</summary>
+<summary>Answer & Explanation</summary>
+
+**Answer: B**
 
 A Helm chart is a collection of files that describe related Kubernetes resources. It includes templates, default values, and metadata. Charts can be shared via repositories.
 
@@ -924,10 +926,10 @@ B. Using Git as the single source of truth for infrastructure and applications
 C. Reduced storage costs  
 D. Improved network performance  
 
-**Answer: B**
-
 <details>
-<summary>Explanation</summary>
+<summary>Answer & Explanation</summary>
+
+**Answer: B**
 
 GitOps core principles:
 
@@ -948,10 +950,10 @@ B. Canary deployment
 C. Blue-green deployment  
 D. Recreate  
 
-**Answer: C**
-
 <details>
-<summary>Explanation</summary>
+<summary>Answer & Explanation</summary>
+
+**Answer: C**
 
 Blue-green deployment maintains two identical environments:
 
@@ -971,10 +973,10 @@ B. To provide HTTP/HTTPS routing to services
 C. To schedule pods on nodes  
 D. To store application secrets  
 
-**Answer: B**
-
 <details>
-<summary>Explanation</summary>
+<summary>Answer & Explanation</summary>
+
+**Answer: B**
 
 Ingress controllers implement Ingress resources, providing:
 
@@ -994,10 +996,10 @@ B. Lower resource usage
 C. Role-oriented design, multi-protocol support, and better extensibility  
 D. Simpler configuration  
 
-**Answer: C**
-
 <details>
-<summary>Explanation</summary>
+<summary>Answer & Explanation</summary>
+
+**Answer: C**
 
 Gateway API advantages over Ingress:
 
@@ -1018,10 +1020,10 @@ B. ArgoCD
 C. kubectl  
 D. Docker  
 
-**Answer: B**
-
 <details>
-<summary>Explanation</summary>
+<summary>Answer & Explanation</summary>
+
+**Answer: B**
 
 ArgoCD excels at multi-cluster management with Git as the source of truth. It can deploy to multiple clusters from a single Git repository, monitor sync status, and auto-heal configuration drift.
 
@@ -1036,10 +1038,10 @@ B. Desired state can be version controlled and automatically reconciled
 C. Requires less storage  
 D. Works without an API server  
 
-**Answer: B**
-
 <details>
-<summary>Explanation</summary>
+<summary>Answer & Explanation</summary>
+
+**Answer: B**
 
 Declarative configuration (YAML/JSON) describes the desired state. Kubernetes controllers automatically reconcile actual state to match desired state. Benefits: version control, repeatability, auditability.
 
@@ -1058,10 +1060,10 @@ B. Prometheus
 C. Envoy  
 D. CoreDNS  
 
-**Answer: B**
-
 <details>
-<summary>Explanation</summary>
+<summary>Answer & Explanation</summary>
+
+**Answer: B**
 
 Prometheus is the CNCF standard for metrics collection and monitoring. It collects time-series data, provides a powerful query language (PromQL), and integrates with Grafana for visualization.
 
@@ -1076,10 +1078,10 @@ B. To monitor disk usage
 C. To manage network routing  
 D. To schedule container workloads  
 
-**Answer: A**
-
 <details>
-<summary>Explanation</summary>
+<summary>Answer & Explanation</summary>
+
+**Answer: A**
 
 Distributed tracing tracks requests across multiple services, showing:
 
@@ -1101,10 +1103,10 @@ B. Individual units of work in a distributed system
 C. Storage volumes  
 D. Pod replicas  
 
-**Answer: B**
-
 <details>
-<summary>Explanation</summary>
+<summary>Answer & Explanation</summary>
+
+**Answer: B**
 
 In distributed tracing:
 
@@ -1124,10 +1126,10 @@ B. Manual scaling and deployment
 C. Microservices, containers, and dynamic orchestration  
 D. Single point of failure for simplicity  
 
-**Answer: C**
-
 <details>
-<summary>Explanation</summary>
+<summary>Answer & Explanation</summary>
+
+**Answer: C**
 
 Cloud-native principles:
 
@@ -1149,10 +1151,10 @@ B. To provide a vendor-neutral home for open-source cloud-native projects
 C. To compete with Kubernetes  
 D. To develop proprietary cloud solutions  
 
-**Answer: B**
-
 <details>
-<summary>Explanation</summary>
+<summary>Answer & Explanation</summary>
+
+**Answer: B**
 
 CNCF (Cloud Native Computing Foundation) hosts and nurtures cloud-native open-source projects like Kubernetes, Prometheus, Envoy, and many others. It's vendor-neutral and part of the Linux Foundation.
 
@@ -1167,10 +1169,10 @@ B. Never
 C. Always  
 D. OnUpdate  
 
-**Answer: C**
-
 <details>
-<summary>Explanation</summary>
+<summary>Answer & Explanation</summary>
+
+**Answer: C**
 
 Image pull policies:
 
@@ -1189,10 +1191,10 @@ B. Use a StatefulSet because databases need stable identity and persistent volum
 C. Use a DaemonSet to ensure the database runs on every node  
 D. Use a Job because databases complete their work and exit  
 
-**Answer: B**
-
 <details>
-<summary>Explanation</summary>
+<summary>Answer & Explanation</summary>
+
+**Answer: B**
 
 Databases require:
 
