@@ -1091,7 +1091,7 @@ Design and document a complete cloud-native application:
 - [The Twelve-Factor App](https://12factor.net/)
 - [Cloud Native Patterns](https://www.manning.com/books/cloud-native-patterns)
 - [CNCF Projects](https://www.cncf.io/projects/)
-- [Kubernetes Patterns](https://www.redhat.com/en/resources/oreilly-kubernetes-patterns-ebook)
+- [Kubernetes Patterns](https://www.oreilly.com/library/view/kubernetes-patterns/9781492050278/)
 
 ---
 
