@@ -62,7 +62,6 @@ B. `kubectl create deployment web-app --image=nginx`
 C. `kubectl deploy web-app --image=nginx`  
 D. `kubectl apply deployment web-app --image=nginx`  
 
-
 <details>
 <summary>Answer & Explanation</summary>
 
@@ -80,7 +79,6 @@ A. `kubectl create` creates any resource type; `kubectl run` creates only pods
 B. `kubectl create` is deprecated; `kubectl run` is the new standard  
 C. They are identical commands with different syntax  
 D. `kubectl create` is for YAML files only; `kubectl run` is for command-line creation  
-
 
 <details>
 <summary>Answer & Explanation</summary>
